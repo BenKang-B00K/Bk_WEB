@@ -1,61 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
-
 body {
-    background-image: url('https://images.unsplash.com/photo-1580234811497-9df7fd2f357e?q=80&w=2532&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
     margin: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    flex-direction: column; /* Arrange items vertically */
-    justify-content: center; /* Center items vertically */
     overflow: hidden;
 }
 
-h1 {
-    /* This style is now handled by h1.arc */
-}
-
-h1.arc {
-    font-family: 'Cinzel', serif;
-    font-weight: 700;
-    font-size: 5vw;
-    color: #FFD700;
-    text-shadow: 2px 2px 4px #000000, 0 0 10px #FFD700;
-    margin-top: -10%; /* Move it up */
-    position: relative;
-    z-index: 10;
-}
-
-.floating-text, .floating-text-2 {
+.arc {
     position: absolute;
-    animation: float 3s ease-in-out infinite;
-    /* Removed width, text-align, and bottom */
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-.floating-text-2 {
-    animation-delay: 1.5s;
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
 }
 
-.floating-text a, .floating-text-2 a {
-    font-family: 'Cinzel', serif;
-    font-size: 2vw;
-    color: #FFD700;
+.grid-item {
+    text-align: center;
+}
+
+.grid-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.grid-item p {
+    margin-top: 10px;
+}
+
+a {
+    color: white;
     text-decoration: none;
-    text-shadow: 1px 1px 2px #000000, 0 0 5px #FFD700;
-    white-space: nowrap; /* Prevent line breaks in links */
+    transition: color 0.3s;
 }
 
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
+a:hover {
+    color: #ccc;
 }
