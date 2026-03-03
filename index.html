@@ -4,17 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Game Making Journey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="center">
-        <h1>My Game Making Journey</h1>
-    </div>
+    <h1 class="arc">My Game Making Journey</h1>
     <div class="floating-text">
         <a href="https://gate-of-hell.pages.dev/" target="_blank">'Gate of Hell : 악령들의 귀환'</a>
     </div>
     <div class="floating-text-2">
         <a href="https://ultimategamingmode.itch.io/galaxy-launch-infinite-fleet" target="_blank">'Galaxy Launch: Infinite Fleet'</a>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/arcntext/0.1.0/arcntext.min.js"></script>
+    <script>
+        const arc = document.querySelector('.arc');
+        const arctext = new ArcText(arc);
+        arctext.arc(200);
+
+        const links = [document.querySelector('.floating-text'), document.querySelector('.floating-text-2')];
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        const avoidanceRadius = 200; // Adjust as needed
+
+        function isOverlapping(x, y) {
+            const distance = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
+            return distance < avoidanceRadius;
+        }
+
+        function setRandomPosition(element) {
+            let x, y;
+            do {
+                x = Math.random() * window.innerWidth;
+                y = Math.random() * window.innerHeight;
+            } while (isOverlapping(x, y));
+
+            element.style.left = `${x}px`;
+            element.style.top = `${y}px`;
+        }
+
+        links.forEach(link => {
+            setRandomPosition(link);
+        });
+    </script>
 </body>
 </html>
