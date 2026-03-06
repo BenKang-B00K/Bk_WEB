@@ -2,18 +2,41 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/png" href="/images/Favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ArcadeDeck | The Ultimate Gaming Experience</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TZYVTF4100"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-TZYVTF4100');
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6365186183616155"
-     crossorigin="anonymous"></script>
-    <script type="module" crossorigin src="/assets/index-BjZdUAu8.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CF_Bos4H.css">
+    <!-- Google AdSense - With error handling for Firefox tracking protection -->
+    <script>
+      (function() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6365186183616155";
+        script.crossOrigin = "anonymous";
+        script.onerror = function() {
+          console.warn("AdSense script failed to load. This might be due to tracking protection or an ad-blocker.");
+          window.adsbygoogle = { push: function() {} }; // Placeholder to prevent errors
+        };
+        document.head.appendChild(script);
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-BZkGAwPc.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/vendor-BfMkLn_Z.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-CkQTNyhd.css">
   </head>
   <body>
     <div id="root"></div>
