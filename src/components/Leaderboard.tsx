@@ -71,6 +71,12 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ entries, gameId, currentNickn
     subLabel = 'Stages';
     subUnit = '';
     title = 'Dicefall Chronicles Leaderboard';
+  } else if (gameId === '12') {
+    label = 'Heroes';
+    unit = ' heroes';
+    subLabel = 'Monsters';
+    subUnit = '';
+    title = 'Heroes of the Last Nexus Leaderboard';
   }
 
   // Common Sort Logic: Score first (DESC)

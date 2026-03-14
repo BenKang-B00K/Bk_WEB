@@ -26,12 +26,17 @@ const Home: React.FC = () => {
   const [selectedGenre, setSelectedGenre] = useState('All');
   const [recentlyPlayedIds, setRecentlyPlayedIds] = useState<string[]>([]);
   const [notification, setNotification] = useState<{ message: string; type: 'success' | 'info' | 'error' } | null>(null);
+  const [recommendedGames, setRecommendedGames] = useState<any[]>([]);
 
   React.useEffect(() => {
     const saved = localStorage.getItem('recently_played');
-    if (saved) {
-      setRecentlyPlayedIds(JSON.parse(saved));
-    }
+    const recentlyPlayed = saved ? JSON.parse(saved) : [];
+    setRecentlyPlayedIds(recentlyPlayed);
+
+    const neverPlayed = games.filter(g => !recentlyPlayed.includes(g.id))
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 3);
+    setRecommendedGames(neverPlayed);
   }, []);
 
   const showNotification = (message: string, type: 'success' | 'info' | 'error' = 'info') => {
@@ -89,10 +94,6 @@ const Home: React.FC = () => {
 
   const recentlyPlayedGames = games.filter(g => recentlyPlayedIds.includes(g.id))
     .sort((a, b) => recentlyPlayedIds.indexOf(a.id) - recentlyPlayedIds.indexOf(b.id));
-
-  const neverPlayedGames = games.filter(g => !recentlyPlayedIds.includes(g.id))
-    .sort(() => Math.random() - 0.5) // Shuffle for variety
-    .slice(0, 3); // Minimalist: only show top 3 recommendations
 
   return (
     <div className="home-page">
@@ -172,11 +173,11 @@ const Home: React.FC = () => {
           </section>
         )}
 
-        {neverPlayedGames.length > 0 && recentlyPlayedIds.length > 0 && selectedGenre === 'All' && (
+        {recommendedGames.length > 0 && recentlyPlayedIds.length > 0 && selectedGenre === 'All' && (
           <section className="never-played-section-minimal">
             <h2 className="section-title-small">Why not <span>Try These?</span></h2>
             <div className="minimal-game-grid">
-              {neverPlayedGames.map(game => (
+              {recommendedGames.map(game => (
                 <Link key={`never-${game.id}`} to={`/play/${game.id}`} className="minimal-game-card">
                   <div className="minimal-thumb">
                     <img src={`${import.meta.env.BASE_URL}${game.thumbnail}`} alt={game.title} />

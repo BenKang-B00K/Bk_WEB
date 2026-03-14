@@ -73,7 +73,7 @@ const GamePlayer: React.FC = () => {
     if (!id) return [];
     try {
       let q;
-      if (['2', '7', '8', '9', '10', '11'].includes(id)) {
+      if (['2', '7', '8', '9', '10', '11', '12'].includes(id)) {
         q = query(
           collection(db, "leaderboards"),
           where("gameId", "==", id),
@@ -130,51 +130,6 @@ const GamePlayer: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    const foundGame = games.find(g => g.id === id);
-    if (foundGame) {
-      setGame(foundGame);
-      const savedTime = localStorage.getItem(`game_save_${foundGame.id}`);
-      if (savedTime) setLastSave(savedTime);
-
-      // Recently Played Logic
-      const recentlyPlayed = JSON.parse(localStorage.getItem('recently_played') || '[]');
-      const updatedList = [foundGame.id, ...recentlyPlayed.filter((gid: string) => gid !== foundGame.id)].slice(0, 4);
-      localStorage.setItem('recently_played', JSON.stringify(updatedList));
-    }
-    fetchLeaderboard();
-    window.scrollTo(0, 0);
-
-    const handleMessage = (event: MessageEvent) => {
-      const types = ['GAME_SCORE', 'SCORE_UPDATE', 'gameOver', 'GAME_OVER'];
-      if (event.data && types.includes(event.data.type)) {
-        const rawScore = event.data.score;
-        const rawSubScore = event.data.subScore;
-        
-        const score = typeof rawScore === 'number' ? rawScore : Number(rawScore);
-        const subScore = typeof rawSubScore === 'number' ? rawSubScore : (rawSubScore !== undefined ? Number(rawSubScore) : undefined);
-        
-        if (rawScore !== undefined && !isNaN(score)) {
-          handleGameComplete(score, subScore);
-        }
-      }
-    };
-
-    window.addEventListener('message', handleMessage);
-    return () => window.removeEventListener('message', handleMessage);
-  }, [id, nickname]);
-
-  useEffect(() => {
-    if (isPseudoFullscreen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isPseudoFullscreen]);
-
   const handleGameComplete = async (score: number, subScore?: number) => {
     if (!id) return;
 
@@ -228,6 +183,8 @@ const GamePlayer: React.FC = () => {
             showNotification(`${t.bestScore} 🔥 Stage ${score} (Artifacts: ${currentSubScore})`, 'success');
           } else if (id === '10') {
             showNotification(`${t.bestScore} 🔥 ${score} Waves (Battles: ${currentSubScore})`, 'success');
+          } else if (id === '12') {
+            showNotification(`${t.bestScore} 🔥 ${score} Heroes (Monsters: ${currentSubScore})`, 'success');
           } else {
             const subLabel = id === '1' ? '' : (id === '5' ? 'Merges' : 'SubScore');
             const unit = id === '1' ? ' Depth' : (id === '5' ? ' pts' : '');
@@ -245,6 +202,8 @@ const GamePlayer: React.FC = () => {
             showNotification(`${t.gameOver} Stage ${score} (Artifacts: ${currentSubScore}) (Best: Stage ${prevScore})`, 'info');
           } else if (id === '10') {
             showNotification(`${t.gameOver} ${score} Waves (Battles: ${currentSubScore}) (Best: ${prevScore} Waves)`, 'info');
+          } else if (id === '12') {
+            showNotification(`${t.gameOver} ${score} Heroes (Monsters: ${currentSubScore}) (Best: ${prevScore} Heroes)`, 'info');
           } else {
             const subLabel = id === '1' ? '' : (id === '5' ? 'Merges' : 'SubScore');
             const unit = id === '1' ? ' Depth' : (id === '5' ? ' pts' : '');
@@ -271,6 +230,8 @@ const GamePlayer: React.FC = () => {
           showNotification(`${t.scoreSubmitted} 🏆 Stage ${score} (Artifacts: ${currentSubScore})`, 'success');
         } else if (id === '10') {
           showNotification(`${t.scoreSubmitted} 🏆 ${score} Waves (Battles: ${currentSubScore})`, 'success');
+        } else if (id === '12') {
+          showNotification(`${t.scoreSubmitted} 🏆 ${score} Heroes (Monsters: ${currentSubScore})`, 'success');
         } else {
           const subLabel = id === '1' ? '' : (id === '5' ? 'Merges' : 'SubScore');
           const unit = id === '1' ? ' Depth' : (id === '5' ? ' pts' : '');
@@ -289,6 +250,51 @@ const GamePlayer: React.FC = () => {
       console.error("Error submitting score: ", error);
     }
   };
+
+  useEffect(() => {
+    const foundGame = games.find(g => g.id === id);
+    if (foundGame) {
+      setGame(foundGame);
+      const savedTime = localStorage.getItem(`game_save_${foundGame.id}`);
+      if (savedTime) setLastSave(savedTime);
+
+      // Recently Played Logic
+      const recentlyPlayed = JSON.parse(localStorage.getItem('recently_played') || '[]');
+      const updatedList = [foundGame.id, ...recentlyPlayed.filter((gid: string) => gid !== foundGame.id)].slice(0, 4);
+      localStorage.setItem('recently_played', JSON.stringify(updatedList));
+    }
+    fetchLeaderboard();
+    window.scrollTo(0, 0);
+
+    const handleMessage = (event: MessageEvent) => {
+      const types = ['GAME_SCORE', 'SCORE_UPDATE', 'gameOver', 'GAME_OVER'];
+      if (event.data && types.includes(event.data.type)) {
+        const rawScore = event.data.score;
+        const rawSubScore = event.data.subScore;
+        
+        const score = typeof rawScore === 'number' ? rawScore : Number(rawScore);
+        const subScore = typeof rawSubScore === 'number' ? rawSubScore : (rawSubScore !== undefined ? Number(rawSubScore) : undefined);
+        
+        if (rawScore !== undefined && !isNaN(score)) {
+          handleGameComplete(score, subScore);
+        }
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, [id, nickname]);
+
+  useEffect(() => {
+    if (isPseudoFullscreen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isPseudoFullscreen]);
 
   const handleFullscreen = () => {
     const element = iframeRef.current as any;

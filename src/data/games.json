@@ -400,5 +400,43 @@
     "aspectRatio": "16/9",
     "status": "PLAYABLE",
     "isOriginal": true
+  },
+  {
+    "id": "12",
+    "title": "Heroes of the Last Nexus",
+    "titleKo": "히어로즈 오브 더 라스트 넥서스",
+    "description": "A strategic hero collection RPG where you must gather heroes to defend the Last Nexus.",
+    "descriptionKo": "라스트 넥서스를 지키기 위해 영웅들을 모으는 전략적 영웅 수집 RPG입니다.",
+    "fullDescription": "\n      In a dying world, the Last Nexus is all that remains. You are a Soul-Binder tasked with summoning legendary heroes to protect this final bastion against the encroaching darkness. Gather your team, level up your heroes, and face waves of monsters in this epic strategic adventure.\n    ",
+    "fullDescriptionKo": "\n      죽어가는 세상 속에서 라스트 넥서스는 남은 유일한 희망입니다. 당신은 다가오는 어둠으로부터 이 마지막 보루를 지키기 위해 전설적인 영웅들을 소환하는 소울 바인더입니다. 영웅들을 모으고 레벨을 올리며, 이 대서사적인 전략 어드벤처에서 밀려드는 몬스터의 파도에 맞서세요.\n    ",
+    "controls": "Mouse/Touch: Summon heroes and manage your team.",
+    "controlsKo": "마우스/터치: 영웅을 소환하고 팀을 관리합니다.",
+    "tips": "Focus on upgrading your tank heroes early. Don't forget to use your Soul-Binder abilities to support your team when things get tough. Synergies between different classes are the key to surviving later waves.",
+    "tipsKo": "초반에는 탱커 영웅들을 업그레이드하는 데 집중하세요. 상황이 어려워질 때 팀을 지원하기 위해 소울 바인더 능력을 사용하는 것을 잊지 마세요. 다른 직업 간의 시너지가 후반 웨이브를 버티는 핵심입니다.",
+    "lore": "\n      The Last Nexus was created by the Ancient Celestials to hold back the Void. For eons, it stood as a beacon of light, but its power is fading. Only the gathering of the Heroes of Legend can restore its strength and push back the darkness once and for all.\n    ",
+    "loreKo": "\n      라스트 넥서스는 고대 셀레스티얼들이 보이드를 막기 위해 만들었습니다. 영겁의 시간 동안 빛의 등대로 서 있었지만, 이제 그 힘이 희미해지고 있습니다. 전설의 영웅들을 모아야만 그 힘을 되찾고 어둠을 영원히 물리칠 수 있습니다.\n    ",
+    "features": [
+      "Over 50 Unique Heroes to Collect",
+      "Strategic Team Formations and Synergies",
+      "Epic Boss Battles and Infinite Monster Waves",
+      "Deep Hero Progression and Skill Trees",
+      "Global Leaderboard for Most Heroes Collected"
+    ],
+    "featuresKo": [
+      "수집 가능한 50종 이상의 유니크한 영웅들",
+      "전략적인 팀 구성 및 시너지",
+      "거대 보스전 및 무한한 몬스터 파도",
+      "깊이 있는 영웅 성장 및 스킬 트리",
+      "최다 영웅 수집 글로벌 리더보드"
+    ],
+    "thumbnail": "images/Heroes of the Last Nexus.png",
+    "genres": [
+      "RPG",
+      "Strategy"
+    ],
+    "gameUrl": "https://heroes-of-the-last-nexus-bk.pages.dev/",
+    "aspectRatio": "16/9",
+    "status": "PLAYABLE",
+    "isOriginal": true
   }
 ]
