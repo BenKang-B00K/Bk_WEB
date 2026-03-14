@@ -455,7 +455,7 @@ const allGames: Game[] = [
     thumbnail: 'images/Dicefall Chronicles.png',
     genres: ['Roguelike', 'Strategy', 'RPG'],
     gameUrl: 'https://dicefall-chronicles-mobile-bk.pages.dev/',
-    aspectRatio: '9/16',
+    aspectRatio: '16/9',
     status: 'PLAYABLE',
     isOriginal: true
   }

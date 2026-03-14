@@ -37,6 +37,7 @@ const GamePlayer: React.FC = () => {
   const [lastSave, setLastSave] = useState<string | null>(null);
   const [isLiked, setIsLiked] = useState(false);
   const [isPseudoFullscreen, setIsPseudoFullscreen] = useState(false);
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
   const [iframeLoading, setIframeLoading] = useState(true);
   const [lang, setLang] = useState<'en' | 'ko'>('en');
   const [notification, setNotification] = useState<{ message: string; type: 'success' | 'info' | 'error' } | null>(null);
@@ -48,7 +49,7 @@ const GamePlayer: React.FC = () => {
   };
 
   const t = {
-    back: lang === 'en' ? '← Back' : '← 뒤로가기',
+    back: lang === 'en' ? 'Arcade Deck' : '아케이드 홈',
     player: lang === 'en' ? 'Player' : '플레이어',
     edit: lang === 'en' ? 'Edit' : '편집',
     save: lang === 'en' ? 'Save' : '저장',
@@ -271,6 +272,7 @@ const GamePlayer: React.FC = () => {
       }
       
       fetchLeaderboard();
+      setShowLeaderboard(true);
     } catch (error) {
       console.error("Error submitting score: ", error);
     }
@@ -340,9 +342,14 @@ const GamePlayer: React.FC = () => {
   };
 
   const wrapperStyle = getWrapperStyle();
+  const thumbnailUrl = game.thumbnail.startsWith('http') 
+    ? game.thumbnail 
+    : `${import.meta.env.BASE_URL}${game.thumbnail}`;
 
   return (
-    <div className="game-player-page">
+    <div className="game-player-page" style={{ 
+      backgroundImage: `linear-gradient(rgba(5, 5, 7, 0.8), rgba(5, 5, 7, 0.9)), url(${thumbnailUrl})` 
+    }}>
       <Helmet>
         <title>{lang === 'ko' ? game.titleKo : game.title} - Play Free on ArcadeDeck</title>
         <meta name="description" content={lang === 'ko' ? game.descriptionKo : game.description} />
@@ -371,7 +378,9 @@ const GamePlayer: React.FC = () => {
               <span className="icon">🌐</span> {lang === 'en' ? '한국어' : 'English'}
             </button>
           </div>
-          <Link to="/" className="back-link">{t.back}</Link>
+          <Link to="/" className="back-button-modern">
+            <span className="icon">🏡</span> {t.back}
+          </Link>
         </div>
 
         <div className="game-header-section">
@@ -397,7 +406,7 @@ const GamePlayer: React.FC = () => {
           </div>
         </div>
 
-        <div className={`game-screen-wrapper ${isPseudoFullscreen ? 'pseudo-fullscreen' : ''}`} style={wrapperStyle}>
+        <div className={`game-screen-wrapper ${isPseudoFullscreen ? 'pseudo-fullscreen' : ''} ambient-glow`} style={wrapperStyle}>
           {isPseudoFullscreen && (
             <button className="exit-pseudo-btn" onClick={() => setIsPseudoFullscreen(false)}>
               ✕ {lang === 'en' ? 'Close Fullscreen' : '전체화면 닫기'}
@@ -472,6 +481,17 @@ const GamePlayer: React.FC = () => {
         <Leaderboard entries={leaderboard} gameId={game.id} currentNickname={nickname} />
         <CommentSection gameId={game.id} currentNickname={nickname} />
       </div>
+
+      {showLeaderboard && (
+        <div className="leaderboard-modal-overlay" onClick={() => setShowLeaderboard(false)}>
+          <div className="leaderboard-modal-content" onClick={e => e.stopPropagation()}>
+            <button className="close-modal-btn" onClick={() => setShowLeaderboard(false)}>✕</button>
+            <div className="modal-inner-scroll">
+              <Leaderboard entries={leaderboard} gameId={game.id} currentNickname={nickname} />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
