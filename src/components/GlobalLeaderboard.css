@@ -1,0 +1,206 @@
+.global-leaderboard-section {
+  width: 95%;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px 20px;
+  background: linear-gradient(145deg, rgba(15, 15, 20, 0.8), rgba(5, 5, 10, 0.9));
+  border-radius: 40px;
+  border: 1px solid rgba(0, 242, 255, 0.1);
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+.section-title {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 5px;
+  text-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+}
+
+.section-subtitle {
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Olympic Podium Style Grid */
+.hall-of-fame-podium {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  padding-top: 40px;
+  min-height: 250px;
+}
+
+.podium-card {
+  flex: 1;
+  max-width: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.podium-card:hover {
+  transform: translateY(-5px);
+}
+
+.podium-crown {
+  font-size: 1.5rem;
+  height: 25px;
+  margin-bottom: 5px;
+}
+
+.podium-rank-badge {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.podium-name {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  margin-bottom: 5px;
+}
+
+.points-num {
+  font-size: 1.4rem;
+  font-weight: 950;
+  color: #00f2ff;
+  display: block;
+}
+
+.points-label {
+  font-size: 0.6rem;
+  color: #555;
+  font-weight: 800;
+}
+
+.podium-base {
+  width: 100%;
+  border-radius: 12px 12px 4px 4px;
+  margin-top: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), transparent);
+}
+
+/* Rank-specific Podium Heights & Colors */
+.rank-1 .podium-base { height: 120px; background: linear-gradient(to bottom, #ffd70033, #ffd7000a); border-color: #ffd7004d; box-shadow: 0 0 20px #ffd7001a; }
+.rank-1 .podium-rank-badge { background: #ffd700; color: #000; border: none; box-shadow: 0 0 15px #ffd70066; }
+.rank-1 .podium-name { font-size: 1.1rem; color: #ffd700; }
+.rank-1 .points-num { font-size: 1.8rem; text-shadow: 0 0 10px #ffd7004d; }
+
+.rank-2 .podium-base { height: 90px; background: linear-gradient(to bottom, #c0c0c033, #c0c0c00a); border-color: #c0c0c04d; }
+.rank-2 .podium-rank-badge { background: #c0c0c0; color: #000; border: none; }
+
+.rank-3 .podium-base { height: 70px; background: linear-gradient(to bottom, #cd7f3233, #cd7f320a); border-color: #cd7f324d; }
+.rank-3 .podium-rank-badge { background: #cd7f32; color: #000; border: none; }
+
+.rank-4 .podium-base { height: 50px; }
+.rank-5 .podium-base { height: 40px; }
+
+.point-info {
+  font-size: 0.75rem;
+  color: #444;
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+.global-loader {
+  padding: 50px;
+  text-align: center;
+  color: #00f2ff;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+/* New: Medals & Refresh Button */
+.medal-case {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: 8px 0;
+  font-size: 0.8rem;
+}
+
+.medal {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 6px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.medal.gold { border-color: #ffd700; color: #ffd700; }
+.medal.silver { border-color: #c0c0c0; color: #c0c0c0; }
+.medal.bronze { border-color: #cd7f32; color: #cd7f32; }
+
+.hall-of-fame-footer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.refresh-btn {
+  background: transparent;
+  border: 1px solid rgba(0, 210, 255, 0.3);
+  color: #00d2ff;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.refresh-btn:hover {
+  background: rgba(0, 210, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.refresh-btn:active {
+  transform: translateY(0);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .hall-of-fame-podium {
+    gap: 5px;
+    min-height: 200px;
+  }
+  .podium-name { font-size: 0.75rem; }
+  .points-num { font-size: 1.1rem; }
+  .rank-1 .points-num { font-size: 1.4rem; }
+  .rank-1 .podium-name { font-size: 0.9rem; }
+  .podium-rank-badge { width: 22px; height: 22px; font-size: 0.7rem; }
+  .podium-crown { font-size: 1.2rem; }
+  .medal-case { font-size: 0.65rem; gap: 4px; }
+  .medal { padding: 1px 4px; }
+}

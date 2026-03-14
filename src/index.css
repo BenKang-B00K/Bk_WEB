@@ -1,0 +1,131 @@
+:root {
+  --bg-color: #050507;
+  --card-bg: #0f0f12;
+  --primary-color: #00f2ff;
+  --secondary-color: #ff00ea;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --accent-color: #7000ff;
+  --glow-color: rgba(0, 242, 255, 0.5);
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+}
+
+body {
+  padding-top: 70px;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+/* Global Neon Utilities */
+.glow-text {
+  text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color);
+}
+
+.neon-border {
+  border: 1px solid var(--primary-color);
+  box-shadow: 0 0 10px var(--glow-color), inset 0 0 5px var(--glow-color);
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 5px var(--glow-color); }
+  50% { box-shadow: 0 0 20px var(--glow-color), 0 0 30px rgba(0, 242, 255, 0.2); }
+  100% { box-shadow: 0 0 5px var(--glow-color); }
+}
+
+@keyframes bg-move {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Global Notification Toast */
+.notification-toast {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 16px 32px;
+  border-radius: 100px;
+  z-index: 9999;
+  font-weight: 700;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-width: 300px;
+  text-align: center;
+}
+
+.notification-toast.success {
+  background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+  color: #fff;
+}
+
+.notification-toast.info {
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+}
+
+.notification-toast.error {
+  background: #ff4d4d;
+  color: #fff;
+}
+
+.animate-in {
+  animation: slideDownFade 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes slideDownFade {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -20px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .notification-toast {
+    width: 90%;
+    min-width: unset;
+    top: 80px;
+  }
+}

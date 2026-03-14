@@ -1,0 +1,56 @@
+.game-grids-container {
+  padding-bottom: 80px;
+}
+
+.game-grid-section {
+  padding: 60px 0;
+}
+
+.game-grid-section.dark-bg {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-title span {
+  color: #00d2ff;
+}
+
+/* Grid Layout Optimized */
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* Responsive Grid Adjustments */
+@media (max-width: 1200px) {
+  .game-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .game-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .section-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 580px) {
+  .game-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}

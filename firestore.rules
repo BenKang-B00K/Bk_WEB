@@ -1,0 +1,36 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Leaderboards collection
+    match /leaderboards/{document} {
+      // Anyone can read the leaderboards
+      allow read: if true;
+      
+      // Anyone can create a new score entry
+      allow create: if true;
+      
+      // Anyone can update an entry (used for updating personal bests)
+      // Ideally, we'd check if the name matches, but since we don't have Auth, 
+      // we allow it. The client code only updates if the new score is higher.
+      allow update: if true;
+    }
+    
+    // Comments collection
+    match /comments/{document} {
+      // Anyone can read comments
+      allow read: if true;
+      
+      // Anyone can post a comment
+      allow create: if true;
+      
+      // Delete/Update not allowed for now
+      allow update, delete: if false;
+    }
+    
+    // Default deny for everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
