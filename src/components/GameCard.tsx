@@ -20,6 +20,20 @@ const GameCard: React.FC<GameCardProps> = ({ game, onProductionClick }) => {
     }
   };
 
+  const getLanguageBadge = () => {
+    switch (game.id) {
+      case '13': return 'KO'; // Timing Chef
+      case '11': return 'EN'; // Dicefall Chronicles
+      case '10': return 'EN'; // Endless War
+      case '9': return 'KO/EN'; // 40th Century
+      case '2': return 'EN'; // Galaxy Launch
+      case '1': return 'KO'; // Gate of Hell
+      default: return null;
+    }
+  };
+
+  const languageBadge = getLanguageBadge();
+
   return (
     <Link to={`/play/${game.id}`} className="game-card" onClick={handleClick}>
       <div className="card-image">
@@ -29,6 +43,9 @@ const GameCard: React.FC<GameCardProps> = ({ game, onProductionClick }) => {
         )}
         {game.features?.includes('Web & Mobile Friendly') && (
           <div className="mobile-friendly-badge">📱 Mobile Ready</div>
+        )}
+        {languageBadge && (
+          <div className="language-badge">{languageBadge}</div>
         )}
         {game.status && (
           <div className={`status-badge ${game.status === 'PLAYABLE' ? 'playable' : 'in-production'}`}>

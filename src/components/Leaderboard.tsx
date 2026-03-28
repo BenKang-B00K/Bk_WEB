@@ -77,6 +77,12 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ entries, gameId, currentNickn
     subLabel = 'Monsters';
     subUnit = '';
     title = 'Heroes of the Last Nexus Leaderboard';
+  } else if (gameId === '13') {
+    label = 'Total Stars';
+    unit = ' Stars';
+    subLabel = 'Receipts';
+    subUnit = '';
+    title = 'Timing Chef Master Leaderboard';
   }
 
   // Common Sort Logic: Score first (DESC)

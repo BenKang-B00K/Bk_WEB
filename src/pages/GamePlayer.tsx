@@ -73,7 +73,7 @@ const GamePlayer: React.FC = () => {
     if (!id) return [];
     try {
       let q;
-      if (['2', '7', '8', '9', '10', '11', '12'].includes(id)) {
+      if (['2', '7', '8', '9', '10', '11', '12', '13'].includes(id)) {
         q = query(
           collection(db, "leaderboards"),
           where("gameId", "==", id),
@@ -185,6 +185,8 @@ const GamePlayer: React.FC = () => {
             showNotification(`${t.bestScore} 🔥 ${score} Waves (Battles: ${currentSubScore})`, 'success');
           } else if (id === '12') {
             showNotification(`${t.bestScore} 🔥 ${score} Heroes (Monsters: ${currentSubScore})`, 'success');
+          } else if (id === '13') {
+            showNotification(`${t.bestScore} 🔥 ${score} Total Stars (Receipts: ${currentSubScore})`, 'success');
           } else {
             const subLabel = id === '1' ? '' : (id === '5' ? 'Merges' : 'SubScore');
             const unit = id === '1' ? ' Depth' : (id === '5' ? ' pts' : '');
@@ -204,6 +206,8 @@ const GamePlayer: React.FC = () => {
             showNotification(`${t.gameOver} ${score} Waves (Battles: ${currentSubScore}) (Best: ${prevScore} Waves)`, 'info');
           } else if (id === '12') {
             showNotification(`${t.gameOver} ${score} Heroes (Monsters: ${currentSubScore}) (Best: ${prevScore} Heroes)`, 'info');
+          } else if (id === '13') {
+            showNotification(`${t.gameOver} ${score} Total Stars (Receipts: ${currentSubScore}) (Best: ${prevScore} Stars)`, 'info');
           } else {
             const subLabel = id === '1' ? '' : (id === '5' ? 'Merges' : 'SubScore');
             const unit = id === '1' ? ' Depth' : (id === '5' ? ' pts' : '');
@@ -232,8 +236,9 @@ const GamePlayer: React.FC = () => {
           showNotification(`${t.scoreSubmitted} 🏆 ${score} Waves (Battles: ${currentSubScore})`, 'success');
         } else if (id === '12') {
           showNotification(`${t.scoreSubmitted} 🏆 ${score} Heroes (Monsters: ${currentSubScore})`, 'success');
-        } else {
-          const subLabel = id === '1' ? '' : (id === '5' ? 'Merges' : 'SubScore');
+        } else if (id === '13') {
+          showNotification(`${t.scoreSubmitted} 🏆 ${score} Total Stars (Receipts: ${currentSubScore})`, 'success');
+        } else {          const subLabel = id === '1' ? '' : (id === '5' ? 'Merges' : 'SubScore');
           const unit = id === '1' ? ' Depth' : (id === '5' ? ' pts' : '');
           const subScoreMsg = subLabel ? ` (${subLabel}: ${currentSubScore})` : '';
           showNotification(`${t.scoreSubmitted} 🏆 ${score.toLocaleString()}${unit}${subScoreMsg}`, 'success');
