@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Home from './pages/Home';
 import GamePlayer from './pages/GamePlayer';
@@ -23,7 +23,7 @@ function App() {
 
   return (
     <HelmetProvider>
-      <Router basename={import.meta.env.BASE_URL}>
+      <Router>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/play/:id" element={<GamePlayer />} />

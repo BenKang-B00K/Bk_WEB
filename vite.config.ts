@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/',
+  base: './',
   build: {
     target: 'es2015', // Increase compatibility for older browsers like Firefox
     cssTarget: 'chrome61', // Better CSS compatibility
