@@ -334,37 +334,12 @@ const GamePlayer: React.FC = () => {
     const h = parseInt(hStr);
     const rNum = w / h;
 
-    if (ratio === '16/9') {
-      return { 
-        width: `min(95vw, calc(85vh * ${rNum}))`, 
-        maxWidth: '1200px', 
-        aspectRatio: '16/9',
-        margin: '0 auto 50px auto',
-        display: 'block'
-      };
-    } else if (ratio === '1/1' || ratio === '16/16') {
-      return { 
-        width: `min(95vw, 85vh, 800px)`, 
-        maxWidth: '100%',
-        aspectRatio: '1/1',
-        margin: '0 auto 50px auto',
-        display: 'block'
-      };
-    } else if (ratio === '9/16') {
-      return { 
-        width: `min(95vw, calc(85vh * ${rNum}), 700px)`, 
-        maxWidth: '100%',
-        aspectRatio: '9/16',
-        margin: '0 auto 50px auto',
-        display: 'block'
-      };
-    }
-    
-    // Default fallback
+    // We want the game to be as large as possible but fit within the viewport
+    // max-height should be around 80-85vh to leave room for UI
     return { 
-      width: `min(95vw, calc(85vh * ${rNum}), 1200px)`, 
-      maxWidth: '100%',
-      aspectRatio: ratio,
+      width: `min(100%, calc(85vh * ${rNum}))`,
+      maxWidth: ratio === '9/16' ? '500px' : '1200px',
+      aspectRatio: ratio.replace('/', ' / '),
       margin: '0 auto 50px auto',
       display: 'block'
     };
