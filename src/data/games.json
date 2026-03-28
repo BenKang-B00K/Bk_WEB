@@ -440,5 +440,44 @@
     "aspectRatio": "16/9",
     "status": "IN PRODUCTION",
     "isOriginal": true
+  },
+  {
+    "id": "13",
+    "title": "Timing Chef",
+    "titleKo": "타이밍 쉐프",
+    "description": "Master the art of perfect timing in the kitchen!",
+    "descriptionKo": "주방에서 완벽한 타이밍의 예술을 마스터하세요!",
+    "fullDescription": "\n      Step into the shoes of an aspiring chef where precision is everything. In Timing Chef, your goal is to cook various dishes to perfection by hitting the sweet spot. \n      Manage multiple orders, watch your heat levels, and serve up culinary masterpieces to hungry customers. \n      As you progress, unlock new recipes and upgrade your kitchen equipment to handle the dinner rush. Can you earn the elusive five-star rating and become the ultimate Timing Chef?\n    ",
+    "fullDescriptionKo": "\n      정밀함이 모든 것인 야심 찬 쉐프가 되어보세요. 타이밍 쉐프의 목표는 정확한 타이밍을 맞춰 다양한 요리를 완벽하게 요리하는 것입니다.\n      여러 주문을 관리하고, 화력을 조절하며, 굶주린 고객들에게 최고의 요리를 선사하세요.\n      게임을 진행하면서 새로운 레시피를 해금하고 주방 기구를 업그레이드하여 바쁜 저녁 시간대를 이겨내세요. 과연 당신은 별 5개 등급을 획득하고 최고의 타이밍 쉐프가 될 수 있을까요?\n    ",
+    "controls": "Mouse/Touch: Click or tap to start and stop cooking actions.",
+    "controlsKo": "마우스/터치: 클릭하거나 터치하여 요리 동작을 시작하고 멈춥니다.",
+    "tips": "Pay close attention to the visual and audio cues. Each ingredient has its own 'perfect' window. Don't let the heat build up too much, or you'll burn the dish!",
+    "tipsKo": "시각적 및 청각적 신호에 세심한 주의를 기울이세요. 각 재료마다 고유한 '완벽한' 타이밍이 있습니다. 열기가 너무 많이 쌓이지 않게 하세요, 그렇지 않으면 요리가 타버릴 거예요!",
+    "lore": "\n      In the high-stakes world of competitive cooking, a single second can be the difference between a Michelin star and a kitchen disaster. \n      The legendary 'Timing Chef' was said to be able to hear the exact moment a steak reached medium-rare from across the room. \n      Do you have the senses and the nerves to follow in their footsteps?\n    ",
+    "loreKo": "\n      치열한 요리 대회 세계에서 단 1초는 미슐랭 스타와 주방의 참사를 가르는 차이가 될 수 있습니다.\n      전설적인 '타이밍 쉐프'는 방 건너편에서도 스테이크가 미디움 레어가 되는 정확한 순간을 들을 수 있었다고 합니다.\n      당신은 그들의 발자취를 따라갈 수 있는 감각과 담력을 가지고 있나요?\n    ",
+    "features": [
+      "Precision-based Rhythm Cooking Gameplay",
+      "Variety of Unlockable Recipes and Cuisines",
+      "Kitchen Upgrade System for Faster Cooking",
+      "Challenging 'Rush Hour' Mode",
+      "Aesthetic Pixel Art and Satisfying Sound Effects",
+      "Web & Mobile Friendly"
+    ],
+    "featuresKo": [
+      "정밀도 기반의 리듬 요리 게임플레이",
+      "다양하고 해금 가능한 레시피와 요리",
+      "더 빠른 요리를 위한 주방 업그레이드 시스템",
+      "도전적인 '러시아워' 모드",
+      "아름다운 픽셀 아트와 만족스러운 음향 효과",
+      "웹 & 모바일 친화적"
+    ],
+    "thumbnail": "images/timing_chef.png",
+    "genres": [
+      "Casual"
+    ],
+    "gameUrl": "https://timing-chef-bk.pages.dev/",
+    "aspectRatio": "16/9",
+    "status": "PLAYABLE",
+    "isOriginal": true
   }
 ]

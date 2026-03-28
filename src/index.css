@@ -20,6 +20,10 @@ html, body {
   background-color: var(--bg-color);
   color: var(--text-primary);
   font-family: var(--font-family);
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 body {
@@ -28,6 +32,13 @@ body {
 
 * {
   box-sizing: inherit;
+}
+
+input, textarea {
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
 }
 
 /* Global Neon Utilities */
