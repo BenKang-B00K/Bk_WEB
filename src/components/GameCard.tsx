@@ -28,6 +28,7 @@ const GameCard: React.FC<GameCardProps> = ({ game, onProductionClick }) => {
       case '9': return 'KO/EN'; // 40th Century
       case '2': return 'EN'; // Galaxy Launch
       case '1': return 'KO'; // Gate of Hell
+      case '14': return 'KO/EN'; // Fruit Frenzy
       default: return null;
     }
   };
