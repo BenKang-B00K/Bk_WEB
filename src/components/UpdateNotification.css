@@ -1,0 +1,122 @@
+.update-notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+.update-notification-toast {
+  pointer-events: auto;
+  background: rgba(5, 5, 7, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 210, 255, 0.4);
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 320px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 210, 255, 0.2);
+  animation: slide-in-right 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.update-notification-content {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.update-icon {
+  font-size: 1.5rem;
+}
+
+.update-text h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #fff;
+  font-weight: 800;
+}
+
+.update-text p {
+  margin: 4px 0 0 0;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.4;
+}
+
+.update-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.update-btn {
+  flex: 1;
+  background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+  color: #000;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.update-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
+
+.close-update-btn {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.close-update-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 480px) {
+  .update-notification-container {
+    top: auto;
+    bottom: 20px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  
+  .update-notification-toast {
+    width: 90vw;
+    animation: slide-in-bottom 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+@keyframes slide-in-bottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

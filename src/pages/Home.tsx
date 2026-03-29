@@ -98,9 +98,36 @@ const Home: React.FC = () => {
   return (
     <div className="home-page">
       <Helmet>
-        <title>ArcadeDeck | The Ultimate Free Browser Games Platform</title>
-        <meta name="description" content="Play the best free online browser games on ArcadeDeck. Top Action, RPG, Strategy, and Idle games with global leaderboards. No downloads needed!" />
-        <meta name="keywords" content="free games, browser games, online games, arcadedeck, action, rpg, clicker games" />
+        <title>ArcadeDeck | Play Best Free Online Browser Games</title>
+        <meta name="description" content="Discover and play the highest quality free online browser games on ArcadeDeck. Join our community, compete on global leaderboards, and find your next favorite game!" />
+        <meta name="keywords" content="free browser games, online games, play free games, arcadedeck, action games, rpg games, idle games, browser arcade" />
+        <link rel="canonical" href="https://arcadedeck.net/" />
+        
+        {/* Open Graph & Twitter Card */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="ArcadeDeck | The Ultimate Free Browser Games Platform" />
+        <meta property="og:description" content="Play the best free online browser games on ArcadeDeck. No downloads required. Join now and start playing!" />
+        <meta property="og:image" content="https://arcadedeck.net/images/ArcadeDeck%20Banner.webp" />
+        <meta property="og:url" content="https://arcadedeck.net/" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="ArcadeDeck | The Ultimate Free Browser Games Platform" />
+        <meta name="twitter:description" content="Play the best free online browser games on ArcadeDeck. No downloads required. Join now and start playing!" />
+        <meta name="twitter:image" content="https://arcadedeck.net/images/ArcadeDeck%20Banner.webp" />
+        
+        {/* JSON-LD Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "ArcadeDeck",
+            "url": "https://arcadedeck.net/",
+            "description": "The Ultimate Free Browser Games Platform",
+            "publisher": {
+              "@type": "Organization",
+              "name": "ArcadeDeck"
+            }
+          })}
+        </script>
       </Helmet>
 
       {notification && (

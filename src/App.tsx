@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import GamePlayer from './pages/GamePlayer';
 import About from './pages/About';
@@ -9,6 +8,8 @@ import Contact from './pages/Contact';
 import HallOfFame from './pages/HallOfFame';
 import MyGames from './pages/MyGames';
 import NotFound from './pages/NotFound';
+import InstallPWA from './components/InstallPWA';
+import UpdateNotification from './components/UpdateNotification';
 
 function App() {
   useEffect(() => {
@@ -22,8 +23,8 @@ function App() {
   }, []);
 
   return (
-    <HelmetProvider>
-      <Router>
+    <Router>
+      <div className="app-main-layout">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/play/:id" element={<GamePlayer />} />
@@ -34,8 +35,10 @@ function App() {
           <Route path="/my-games" element={<MyGames />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </Router>
-    </HelmetProvider>
+        <InstallPWA />
+        <UpdateNotification />
+      </div>
+    </Router>
   );
 }
 

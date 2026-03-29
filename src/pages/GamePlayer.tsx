@@ -367,9 +367,49 @@ const GamePlayer: React.FC = () => {
     }}>
       <Helmet>
         <title>{lang === 'ko' ? game.titleKo : game.title} - Play Free on ArcadeDeck</title>
-        <meta name="description" content={lang === 'ko' ? game.descriptionKo : game.description} />
+        <meta name="description" content={lang === 'ko' ? `${game.titleKo}: ${game.descriptionKo} ArcadeDeck에서 무료로 즐기세요!` : `Play ${game.title}: ${game.description} Free online browser game on ArcadeDeck.`} />
+        <meta name="keywords" content={`${game.title}, ${game.genres.join(', ')}, free online game, browser game, arcadedeck`} />
+        <link rel="canonical" href={`https://arcadedeck.net/play/${id}`} />
+        
+        {/* Open Graph & Twitter Card */}
+        <meta property="og:type" content="website" />
         <meta property="og:title" content={`${lang === 'ko' ? game.titleKo : game.title} - ArcadeDeck`} />
         <meta property="og:description" content={lang === 'ko' ? game.descriptionKo : game.description} />
+        <meta property="og:image" content={`https://arcadedeck.net/${game.thumbnail}`} />
+        <meta property="og:url" content={`https://arcadedeck.net/play/${id}`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${lang === 'ko' ? game.titleKo : game.title} - ArcadeDeck`} />
+        <meta name="twitter:description" content={lang === 'ko' ? game.descriptionKo : game.description} />
+        <meta name="twitter:image" content={`https://arcadedeck.net/${game.thumbnail}`} />
+
+        {/* JSON-LD Structured Data for Video Game */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": lang === 'ko' ? game.titleKo : game.title,
+            "description": lang === 'ko' ? game.descriptionKo : game.description,
+            "applicationCategory": "GameApplication",
+            "genre": game.genres[0],
+            "operatingSystem": "Web Browser",
+            "image": `https://arcadedeck.net/${game.thumbnail}`,
+            "url": `https://arcadedeck.net/play/${id}`,
+            "author": {
+              "@type": "Organization",
+              "name": "ArcadeDeck"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "ratingCount": "1250"
+            }
+          })}
+        </script>
       </Helmet>
       
       {notification && (

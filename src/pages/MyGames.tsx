@@ -117,7 +117,11 @@ const MyGames = () => {
   return (
     <div className="my-games-page">
       <Helmet>
-        <title>My Ranking - ArcadeDeck</title>
+        <title>My Gaming Stats & Ranks | ArcadeDeck</title>
+        <meta name="description" content="Check your personal ranking, achievements, and game progress on ArcadeDeck. Track your performance across all universes!" />
+        <meta property="og:title" content="My Gaming Stats & Ranks | ArcadeDeck" />
+        <meta property="og:url" content="https://arcadedeck.net/my-games" />
+        <meta name="robots" content="noindex, follow" />
       </Helmet>
       <Navbar />
       <div className="container">

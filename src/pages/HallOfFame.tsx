@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import Navbar from '../components/Navbar';
 import GlobalLeaderboard from '../components/GlobalLeaderboard';
 import './HallOfFame.css';
@@ -10,6 +11,13 @@ const HallOfFame: React.FC = () => {
 
   return (
     <div className="hall-of-fame-page">
+      <Helmet>
+        <title>Hall of Fame | ArcadeDeck Legends</title>
+        <meta name="description" content="Witness the legends of ArcadeDeck. Check out the top players and historical records of our most competitive browser games." />
+        <meta property="og:title" content="Hall of Fame | ArcadeDeck Legends" />
+        <meta property="og:description" content="Are you among the legends? Check the global leaderboards and monthly archives." />
+        <meta property="og:url" content="https://arcadedeck.net/hall-of-fame" />
+      </Helmet>
       <Navbar />
       <div className="container hof-container">
         <header className="hof-header">
