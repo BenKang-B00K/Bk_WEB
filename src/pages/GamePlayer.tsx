@@ -30,7 +30,9 @@ interface LeaderboardEntry {
 }
 
 const GamePlayer: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+  const { slug } = useParams<{ slug: string }>();
+  // Support both slug-based (/play/gate-of-hell) and legacy id-based (/play/1) URLs
+  const id = games.find(g => g.slug === slug)?.id ?? slug;
   const [game, setGame] = useState<Game | null>(null);
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [nickname] = useState<string>(localStorage.getItem('player_nickname') || 'Explorer');
@@ -72,23 +74,10 @@ const GamePlayer: React.FC = () => {
   const fetchLeaderboard = async () => {
     if (!id) return [];
     try {
-      let q;
-      if (['2', '7', '8', '9', '10', '11', '12', '13'].includes(id)) {
-        q = query(
-          collection(db, "leaderboards"),
-          where("gameId", "==", id),
-          orderBy("score", "desc"),
-          orderBy("subScore", "desc"),
-          limit(100) 
-        );
-      } else {
-        q = query(
-          collection(db, "leaderboards"),
-          where("gameId", "==", id),
-          orderBy("score", "desc"),
-          limit(100) 
-        );
-      }
+      const dualSort = games.find(g => g.id === id)?.leaderboard?.dualSort ?? false;
+      const q = dualSort
+        ? query(collection(db, "leaderboards"), where("gameId", "==", id), orderBy("score", "desc"), orderBy("subScore", "desc"), limit(100))
+        : query(collection(db, "leaderboards"), where("gameId", "==", id), orderBy("score", "desc"), limit(100));
       
       const querySnapshot = await getDocs(q);
       const entries = querySnapshot.docs.map(doc => {
@@ -133,6 +122,16 @@ const GamePlayer: React.FC = () => {
   const handleGameComplete = async (score: number, subScore?: number) => {
     if (!id) return;
 
+    // Resolve leaderboard display config from games data (no hardcoded IDs)
+    const lb = games.find(g => g.id === id)?.leaderboard;
+    const primaryUnit    = lb?.primaryUnit    ?? '';
+    const secondaryLabel = lb?.secondaryLabel ?? '';
+    const secondaryUnit  = lb?.secondaryUnit  ?? '';
+    const subSortAsc     = lb?.subSortAsc     ?? false;
+
+    const buildSubPart = (sub: number) =>
+      secondaryLabel ? ` (${secondaryLabel}: ${secondaryUnit}${sub})` : '';
+
     try {
       const q = query(
         collection(db, "leaderboards"),
@@ -143,112 +142,45 @@ const GamePlayer: React.FC = () => {
       const querySnapshot = await getDocs(q);
 
       const currentSubScore = subScore ?? 0;
-      
+
       if (!querySnapshot.empty) {
         const docSnap = querySnapshot.docs[0];
         const prevData = docSnap.data();
-        const prevScore = Number(prevData.score) || 0;
+        const prevScore    = Number(prevData.score)    || 0;
         const prevSubScore = Number(prevData.subScore) || 0;
 
-        let isNewBest = false;
-        
-        if (id === '5') { 
-          if (score > prevScore) {
-            isNewBest = true;
-          } else if (score === prevScore && currentSubScore < prevSubScore) {
-            isNewBest = true;
-          }
-        } else {
-          if (score > prevScore) {
-            isNewBest = true;
-          } else if (score === prevScore && currentSubScore > prevSubScore) {
-            isNewBest = true;
-          }
-        }
+        const isNewBest = subSortAsc
+          ? (score > prevScore || (score === prevScore && currentSubScore < prevSubScore))
+          : (score > prevScore || (score === prevScore && currentSubScore > prevSubScore));
 
         if (isNewBest) {
           await updateDoc(doc(db, "leaderboards", docSnap.id), {
-            score: score,
+            score,
             subScore: currentSubScore,
             createdAt: serverTimestamp()
           });
-          
-          if (id === '2') {
-            showNotification(`${t.bestScore} 🔥 ${score} (Best Planet Level: Lv.${currentSubScore})`, 'success');
-          } else if (id === '7') {
-            showNotification(`${t.bestScore} 🔥 ${score} level (Clicks: ${currentSubScore})`, 'success');
-          } else if (id === '8') {
-            showNotification(`${t.bestScore} 🔥 ${score}% Win Rate (Total Wins: ${currentSubScore})`, 'success');
-          } else if (id === '9') {
-            showNotification(`${t.bestScore} 🔥 Stage ${score} (Artifacts: ${currentSubScore})`, 'success');
-          } else if (id === '10') {
-            showNotification(`${t.bestScore} 🔥 ${score} Waves (Battles: ${currentSubScore})`, 'success');
-          } else if (id === '11') {
-            showNotification(`${t.bestScore} 🔥 ${score} Chapters (Stages: ${currentSubScore})`, 'success');
-          } else if (id === '12') {
-            showNotification(`${t.bestScore} 🔥 ${score} Heroes (Monsters: ${currentSubScore})`, 'success');
-          } else if (id === '13') {
-            showNotification(`${t.bestScore} 🔥 ${score} Total Stars (Receipts: ${currentSubScore})`, 'success');
-          } else {
-            const subLabel = id === '1' ? '' : (id === '5' ? 'Merges' : 'SubScore');
-            const unit = id === '1' ? ' Depth' : (id === '5' ? ' pts' : '');
-            const subScoreMsg = subLabel ? ` (${subLabel}: ${currentSubScore})` : '';
-            showNotification(`${t.bestScore} 🔥 ${score.toLocaleString()}${unit}${subScoreMsg}`, 'success');
-          }
+          showNotification(
+            `${t.bestScore} 🔥 ${score.toLocaleString()}${primaryUnit}${buildSubPart(currentSubScore)}`,
+            'success'
+          );
         } else {
-          if (id === '2') {
-            showNotification(`${t.currentProgress} ${score} (Planet Level: Lv.${currentSubScore})`, 'info');
-          } else if (id === '7') {
-            showNotification(`${t.gameOver} ${score} level (Clicks: ${currentSubScore})`, 'info');
-          } else if (id === '8') {
-            showNotification(`${t.gameOver} ${score}% (Wins: ${currentSubScore}) (Best: ${prevScore}%)`, 'info');
-          } else if (id === '9') {
-            showNotification(`${t.gameOver} Stage ${score} (Artifacts: ${currentSubScore}) (Best: Stage ${prevScore})`, 'info');
-          } else if (id === '10') {
-            showNotification(`${t.gameOver} ${score} Waves (Battles: ${currentSubScore}) (Best: ${prevScore} Waves)`, 'info');
-          } else if (id === '11') {
-            showNotification(`${t.gameOver} ${score} Chapters (Stages: ${currentSubScore}) (Best: ${prevScore} Chapters)`, 'info');
-          } else if (id === '12') {
-            showNotification(`${t.gameOver} ${score} Heroes (Monsters: ${currentSubScore}) (Best: ${prevScore} Heroes)`, 'info');
-          } else if (id === '13') {
-            showNotification(`${t.gameOver} ${score} Total Stars (Receipts: ${currentSubScore}) (Best: ${prevScore} Stars)`, 'info');
-          } else {
-            const subLabel = id === '1' ? '' : (id === '5' ? 'Merges' : 'SubScore');
-            const unit = id === '1' ? ' Depth' : (id === '5' ? ' pts' : '');
-            const subScoreMsg = subLabel ? ` (${subLabel}: ${currentSubScore})` : '';
-            showNotification(`${t.gameOver} ${score.toLocaleString()}${unit}${subScoreMsg} (Best: ${prevScore.toLocaleString()})`, 'info');
-          }
+          showNotification(
+            `${t.gameOver} ${score.toLocaleString()}${primaryUnit}${buildSubPart(currentSubScore)} (Best: ${prevScore.toLocaleString()}${primaryUnit})`,
+            'info'
+          );
         }
       } else {
         await addDoc(collection(db, "leaderboards"), {
           gameId: id,
           name: nickname,
-          score: score,
+          score,
           subScore: currentSubScore,
           createdAt: serverTimestamp()
         });
-
-        if (id === '2') {
-          showNotification(`${t.scoreSubmitted} 🏆 ${score} (Planet Level: Lv.${currentSubScore})`, 'success');
-        } else if (id === '7') {
-          showNotification(`${t.scoreSubmitted} 🏆 ${score} level (Clicks: ${currentSubScore})`, 'success');
-        } else if (id === '8') {
-          showNotification(`${t.scoreSubmitted} 🏆 ${score}% (Wins: ${currentSubScore})`, 'success');
-        } else if (id === '9') {
-          showNotification(`${t.scoreSubmitted} 🏆 Stage ${score} (Artifacts: ${currentSubScore})`, 'success');
-        } else if (id === '10') {
-          showNotification(`${t.scoreSubmitted} 🏆 ${score} Waves (Battles: ${currentSubScore})`, 'success');
-        } else if (id === '11') {
-          showNotification(`${t.scoreSubmitted} 🏆 ${score} Chapters (Stages: ${currentSubScore})`, 'success');
-        } else if (id === '12') {
-          showNotification(`${t.scoreSubmitted} 🏆 ${score} Heroes (Monsters: ${currentSubScore})`, 'success');
-        } else if (id === '13') {
-          showNotification(`${t.scoreSubmitted} 🏆 ${score} Total Stars (Receipts: ${currentSubScore})`, 'success');
-        } else {          const subLabel = id === '1' ? '' : (id === '5' ? 'Merges' : 'SubScore');
-          const unit = id === '1' ? ' Depth' : (id === '5' ? ' pts' : '');
-          const subScoreMsg = subLabel ? ` (${subLabel}: ${currentSubScore})` : '';
-          showNotification(`${t.scoreSubmitted} 🏆 ${score.toLocaleString()}${unit}${subScoreMsg}`, 'success');
-        }
+        showNotification(
+          `${t.scoreSubmitted} 🏆 ${score.toLocaleString()}${primaryUnit}${buildSubPart(currentSubScore)}`,
+          'success'
+        );
       }
       
       const updatedEntries = await fetchLeaderboard();
@@ -277,18 +209,36 @@ const GamePlayer: React.FC = () => {
     fetchLeaderboard();
     window.scrollTo(0, 0);
 
+    // Derive the allowed origin from the game's iframe URL
+    let allowedOrigin: string | null = null;
+    if (foundGame?.gameUrl) {
+      try {
+        allowedOrigin = new URL(foundGame.gameUrl).origin;
+      } catch {
+        allowedOrigin = null;
+      }
+    }
+
     const handleMessage = (event: MessageEvent) => {
+      // Block messages from any origin other than the game's own domain
+      if (allowedOrigin && event.origin !== allowedOrigin) return;
+
       const types = ['GAME_SCORE', 'SCORE_UPDATE', 'gameOver', 'GAME_OVER'];
       if (event.data && types.includes(event.data.type)) {
         const rawScore = event.data.score;
         const rawSubScore = event.data.subScore;
-        
+
         const score = typeof rawScore === 'number' ? rawScore : Number(rawScore);
         const subScore = typeof rawSubScore === 'number' ? rawSubScore : (rawSubScore !== undefined ? Number(rawSubScore) : undefined);
-        
-        if (rawScore !== undefined && !isNaN(score)) {
-          handleGameComplete(score, subScore);
-        }
+
+        // Validate score is a safe, non-negative finite number within a sane ceiling
+        if (rawScore === undefined || isNaN(score) || !isFinite(score) || score < 0 || score > 10_000_000) return;
+
+        const safeSubScore = (subScore !== undefined && isFinite(subScore) && subScore >= 0)
+          ? subScore
+          : undefined;
+
+        handleGameComplete(score, safeSubScore);
       }
     };
 
@@ -369,44 +319,46 @@ const GamePlayer: React.FC = () => {
         <title>{lang === 'ko' ? game.titleKo : game.title} - Play Free on ArcadeDeck</title>
         <meta name="description" content={lang === 'ko' ? `${game.titleKo}: ${game.descriptionKo} ArcadeDeck에서 무료로 즐기세요!` : `Play ${game.title}: ${game.description} Free online browser game on ArcadeDeck.`} />
         <meta name="keywords" content={`${game.title}, ${game.genres.join(', ')}, free online game, browser game, arcadedeck`} />
-        <link rel="canonical" href={`https://arcadedeck.net/play/${id}`} />
-        
+        <link rel="canonical" href={`https://arcadedeck.net/play/${game.slug}`} />
+        <link rel="alternate" hrefLang="en" href={`https://arcadedeck.net/play/${game.slug}`} />
+        <link rel="alternate" hrefLang="ko" href={`https://arcadedeck.net/play/${game.slug}`} />
+        <link rel="alternate" hrefLang="x-default" href={`https://arcadedeck.net/play/${game.slug}`} />
+
         {/* Open Graph & Twitter Card */}
         <meta property="og:type" content="website" />
         <meta property="og:title" content={`${lang === 'ko' ? game.titleKo : game.title} - ArcadeDeck`} />
         <meta property="og:description" content={lang === 'ko' ? game.descriptionKo : game.description} />
         <meta property="og:image" content={`https://arcadedeck.net/${game.thumbnail}`} />
-        <meta property="og:url" content={`https://arcadedeck.net/play/${id}`} />
+        <meta property="og:url" content={`https://arcadedeck.net/play/${game.slug}`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`${lang === 'ko' ? game.titleKo : game.title} - ArcadeDeck`} />
         <meta name="twitter:description" content={lang === 'ko' ? game.descriptionKo : game.description} />
         <meta name="twitter:image" content={`https://arcadedeck.net/${game.thumbnail}`} />
 
-        {/* JSON-LD Structured Data for Video Game */}
+        {/* JSON-LD Structured Data — VideoGame schema */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": lang === 'ko' ? game.titleKo : game.title,
-            "description": lang === 'ko' ? game.descriptionKo : game.description,
+            "@type": "VideoGame",
+            "name": game.title,
+            "alternateName": game.titleKo,
+            "description": game.description,
+            "genre": game.genres,
             "applicationCategory": "GameApplication",
-            "genre": game.genres[0],
             "operatingSystem": "Web Browser",
+            "inLanguage": ["en", "ko"],
             "image": `https://arcadedeck.net/${game.thumbnail}`,
-            "url": `https://arcadedeck.net/play/${id}`,
+            "url": `https://arcadedeck.net/play/${game.slug}`,
             "author": {
               "@type": "Organization",
-              "name": "ArcadeDeck"
+              "name": "ArcadeDeck",
+              "url": "https://arcadedeck.net"
             },
             "offers": {
               "@type": "Offer",
               "price": "0",
-              "priceCurrency": "USD"
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.8",
-              "ratingCount": "1250"
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
             }
           })}
         </script>

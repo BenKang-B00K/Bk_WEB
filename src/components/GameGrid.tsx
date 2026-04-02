@@ -46,7 +46,11 @@ const GameGrid: React.FC<GameGridProps> = ({ selectedGenre = 'All', onProduction
             {processedGames.length > 0 ? (
               processedGames.map((game) => <GameCard key={game.id} game={game} onProductionClick={onProductionClick} />)
             ) : (
-              <p style={{ color: '#aaa', padding: '40px 0', textAlign: 'center', width: '100%' }}>No games found matching your criteria.</p>
+              <div className="empty-state">
+                <div className="empty-state-icon">🎮</div>
+                <h3 className="empty-state-title">No {selectedGenre} games yet</h3>
+                <p className="empty-state-desc">More games in this genre are coming soon. Check back later!</p>
+              </div>
             )}
           </div>
         </div>

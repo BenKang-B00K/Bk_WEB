@@ -1,5 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 
+declare global {
+  interface Window {
+    adsbygoogle: unknown[];
+    adsense_initialized?: boolean;
+  }
+}
+
 interface AdBannerProps {
   slot?: string;
   style?: React.CSSProperties;
@@ -15,8 +22,8 @@ const AdBanner: React.FC<AdBannerProps> = ({ slot, style, format = 'auto', place
     if (!slot) return;
 
     // Load AdSense script dynamically if not already present
-    if (!(window as any).adsense_initialized && !document.querySelector('script[src*="adsbygoogle.js"]')) {
-      (window as any).adsense_initialized = true;
+    if (!window.adsense_initialized && !document.querySelector('script[src*="adsbygoogle.js"]')) {
+      window.adsense_initialized = true;
       const script = document.createElement('script');
       script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6365186183616155";
       script.async = true;
@@ -27,7 +34,6 @@ const AdBanner: React.FC<AdBannerProps> = ({ slot, style, format = 'auto', place
     // Push the ad
     if (!adPushed.current) {
       try {
-        // @ts-ignore
         (window.adsbygoogle = window.adsbygoogle || []).push({});
         adPushed.current = true;
       } catch (e) {

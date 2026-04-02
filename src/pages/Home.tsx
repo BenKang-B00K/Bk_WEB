@@ -57,7 +57,7 @@ const Home: React.FC = () => {
     const hasBannedWord = BANNED_WORDS.some(word => lowerCaseName.includes(word.toLowerCase()));
 
     if (hasBannedWord) {
-      alert("Inappropriate language detected. Please choose a different nickname.");
+      showNotification("Inappropriate language detected. Please choose a different nickname.", 'error');
       return;
     }
 
@@ -68,7 +68,7 @@ const Home: React.FC = () => {
     if (!querySnapshot.empty && finalName !== nickname) {
       const uniqueId = Math.floor(1000 + Math.random() * 9000);
       finalName = `${finalName}#${uniqueId}`;
-      alert(`This name is already taken. To ensure uniqueness, we've assigned you a tag: ${finalName}`);
+      showNotification(`Name taken — assigned unique tag: ${finalName}`, 'info');
     }
 
     setNickname(finalName);
@@ -89,7 +89,7 @@ const Home: React.FC = () => {
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
-    alert('Link copied to clipboard!');
+    showNotification('Link copied to clipboard! 🔗', 'success');
   };
 
   const recentlyPlayedGames = games.filter(g => recentlyPlayedIds.includes(g.id))
@@ -122,9 +122,19 @@ const Home: React.FC = () => {
             "name": "ArcadeDeck",
             "url": "https://arcadedeck.net/",
             "description": "The Ultimate Free Browser Games Platform",
+            "inLanguage": ["en", "ko"],
             "publisher": {
               "@type": "Organization",
-              "name": "ArcadeDeck"
+              "name": "ArcadeDeck",
+              "url": "https://arcadedeck.net"
+            },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://arcadedeck.net/?search={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
             }
           })}
         </script>
@@ -150,14 +160,19 @@ const Home: React.FC = () => {
             
             {isEditing ? (
               <form onSubmit={handleSaveName} className="home-nickname-form">
-                <input 
-                  type="text" 
-                  value={tempName} 
-                  onChange={(e) => setTempName(e.target.value)}
-                  maxLength={12}
-                  placeholder="Enter Gamer ID..."
-                  autoFocus
-                />
+                <div className="nickname-input-wrapper">
+                  <input
+                    type="text"
+                    value={tempName}
+                    onChange={(e) => setTempName(e.target.value)}
+                    maxLength={12}
+                    placeholder="Enter Gamer ID..."
+                    autoFocus
+                  />
+                  <span className={`nickname-char-count${tempName.length >= 10 ? ' near-limit' : ''}`}>
+                    {tempName.length}/12
+                  </span>
+                </div>
                 <button type="submit">Initialize Profile</button>
                 <p className="nickname-info-msg">* If the name exists, a unique #ID will be added automatically.</p>
               </form>
@@ -189,10 +204,11 @@ const Home: React.FC = () => {
               <h2 className="section-title-small" style={{ textAlign: 'left', marginBottom: '20px' }}>Jump <span>Back In</span></h2>
               <div className="game-grid small-grid">
                 {recentlyPlayedGames.map(game => (
-                  <GameCard 
-                    key={`recent-${game.id}`} 
-                    game={game} 
-                    onProductionClick={() => showNotification('PLEASE COME BACK LATER 🚧', 'info')} 
+                  <GameCard
+                    key={`recent-${game.id}`}
+                    game={game}
+                    isRecentlyPlayed
+                    onProductionClick={() => showNotification('PLEASE COME BACK LATER 🚧', 'info')}
                   />
                 ))}
               </div>

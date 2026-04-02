@@ -4,7 +4,27 @@ import Navbar from '../components/Navbar';
 import GlobalLeaderboard from '../components/GlobalLeaderboard';
 import './HallOfFame.css';
 
-const archiveData: any[] = [];
+interface MonthlyWinner {
+  rank: number;
+  name: string;
+  score: string | number;
+}
+
+interface MonthlyArchive {
+  month: string;
+  winners: MonthlyWinner[];
+}
+
+const archiveData: MonthlyArchive[] = [
+  {
+    month: 'March 2026',
+    winners: [
+      { rank: 1, name: 'Playerkt', score: '12 pts' },
+      { rank: 2, name: 'GG',       score: '10 pts' },
+      { rank: 3, name: 'BEN',      score: '7 pts'  },
+    ],
+  },
+];
 
 const HallOfFame: React.FC = () => {
   const currentMonth = new Date().toLocaleString('en-US', { month: 'long', year: 'numeric' });
@@ -38,7 +58,7 @@ const HallOfFame: React.FC = () => {
                 <div key={idx} className="archive-card">
                   <h3>{data.month}</h3>
                   <ul className="winner-list">
-                    {data.winners.map((w: any) => (
+                    {data.winners.map((w) => (
                       <li key={w.rank} className={`winner-item rank-${w.rank}`}>
                         <span className="rank-symbol">{w.rank === 1 ? '🥇' : w.rank === 2 ? '🥈' : '🥉'}</span>
                         <span className="winner-name">{w.name}</span>

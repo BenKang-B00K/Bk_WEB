@@ -16,34 +16,58 @@ interface GlobalLeaderboardProps {
   onDataLoaded?: (players: GlobalRank[]) => void;
 }
 
+// Module-level cache: persists across component unmount/remount (e.g. navigating away and back)
+const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
+let rankCache: { sorted: GlobalRank[]; expiresAt: number } | null = null;
+
 const GlobalLeaderboard: React.FC<GlobalLeaderboardProps> = ({ onDataLoaded }) => {
   const [podiumPlayers, setPodiumPlayers] = useState<GlobalRank[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [lastUpdated, setLastUpdated] = useState<string | null>(null);
   const isInitialMount = useRef(true);
+
+  const buildPodium = (sorted: GlobalRank[]) => {
+    // Podium Order: 2nd - 1st - 3rd
+    return [sorted[1], sorted[0], sorted[2]].filter(p => p !== undefined);
+  };
+
+  const applyResult = useCallback((sorted: GlobalRank[]) => {
+    const withRank = sorted.map((p, i) => ({ ...p, originalRank: i + 1 }));
+    setPodiumPlayers(buildPodium(withRank));
+    if (onDataLoaded) onDataLoaded(withRank);
+    setLoading(false);
+    setLastUpdated(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+  }, [onDataLoaded]);
 
   const calculateGlobalRanking = useCallback(async () => {
     setLoading(true);
+
+    // Return cached result if still fresh
+    if (rankCache && Date.now() < rankCache.expiresAt) {
+      applyResult(rankCache.sorted);
+      return;
+    }
+
     const playerPoints: Record<string, GlobalRank> = {};
 
     try {
       const promises = games.map(async (game) => {
-        let q;
-        if (['2', '7', '8', '9', '10', '11', '12', '13', '14'].includes(game.id)) {
-          q = query(
-            collection(db, "leaderboards"),
-            where("gameId", "==", game.id),
-            orderBy("score", "desc"),
-            orderBy("subScore", "desc"),
-            limit(3)
-          );
-        } else {
-          q = query(
-            collection(db, "leaderboards"),
-            where("gameId", "==", game.id),
-            orderBy("score", "desc"),
-            limit(3)
-          );
-        }
+        const dualSort = game.leaderboard?.dualSort ?? false;
+        const q = dualSort
+          ? query(
+              collection(db, "leaderboards"),
+              where("gameId", "==", game.id),
+              orderBy("score", "desc"),
+              orderBy("subScore", "desc"),
+              limit(3)
+            )
+          : query(
+              collection(db, "leaderboards"),
+              where("gameId", "==", game.id),
+              orderBy("score", "desc"),
+              limit(3)
+            );
 
         const snapshot = await getDocs(q);
         snapshot.docs.forEach((doc, index) => {
@@ -53,10 +77,10 @@ const GlobalLeaderboard: React.FC<GlobalLeaderboardProps> = ({ onDataLoaded }) =
           const points = rank === 1 ? 3 : rank === 2 ? 2 : 1;
 
           if (!playerPoints[name]) {
-            playerPoints[name] = { 
-              name, 
-              totalPoints: 0, 
-              medals: { gold: 0, silver: 0, bronze: 0 } 
+            playerPoints[name] = {
+              name,
+              totalPoints: 0,
+              medals: { gold: 0, silver: 0, bronze: 0 }
             };
           }
 
@@ -71,28 +95,24 @@ const GlobalLeaderboard: React.FC<GlobalLeaderboardProps> = ({ onDataLoaded }) =
 
       const sorted = Object.values(playerPoints)
         .sort((a, b) => b.totalPoints - a.totalPoints)
-        .slice(0, 3)
-        .map((p, i) => ({ ...p, originalRank: i + 1 }));
+        .slice(0, 3);
 
-      // Podium Order: 2nd - 1st - 3rd
-      const podiumOrder = [
-        sorted[1], // 2nd
-        sorted[0], // 1st
-        sorted[2], // 3rd
-      ].filter(p => p !== undefined);
+      // Store in cache
+      rankCache = { sorted, expiresAt: Date.now() + CACHE_TTL_MS };
 
-      setPodiumPlayers(podiumOrder);
-      
-      // Notify parent after setting local state
-      if (onDataLoaded) {
-        onDataLoaded(sorted);
-      }
+      applyResult(sorted);
     } catch (error) {
       console.error("Error calculating global ranking:", error);
-    } finally {
       setLoading(false);
     }
-  }, [onDataLoaded]);
+  }, [applyResult]);
+
+  const handleRefresh = useCallback(async () => {
+    rankCache = null;
+    setIsSyncing(true);
+    await calculateGlobalRanking();
+    setIsSyncing(false);
+  }, [calculateGlobalRanking]);
 
   useEffect(() => {
     if (isInitialMount.current) {
@@ -108,7 +128,7 @@ const GlobalLeaderboard: React.FC<GlobalLeaderboardProps> = ({ onDataLoaded }) =
     <div className="global-leaderboard-section">
       <h2 className="section-title">🏆 Global Ranking</h2>
       <p className="section-subtitle">The Best Players of ArcadeDeck</p>
-      
+
       <div className="hall-of-fame-podium">
         {podiumPlayers.map((player) => (
           <div key={player.name} className={`podium-card rank-${player.originalRank}`}>
@@ -116,7 +136,7 @@ const GlobalLeaderboard: React.FC<GlobalLeaderboardProps> = ({ onDataLoaded }) =
             <div className="podium-rank-badge">{player.originalRank}</div>
             <div className="podium-info">
               <div className="podium-name">{player.name}</div>
-              
+
               <div className="medal-case">
                 {player.medals.gold > 0 && <span className="medal gold">🥇{player.medals.gold}</span>}
                 {player.medals.silver > 0 && <span className="medal silver">🥈{player.medals.silver}</span>}
@@ -132,7 +152,7 @@ const GlobalLeaderboard: React.FC<GlobalLeaderboardProps> = ({ onDataLoaded }) =
           </div>
         ))}
       </div>
-      
+
       <div className="hall-of-fame-footer">
         <Link to="/hall-of-fame" className="hof-link-btn">
           <span className="icon">🏆</span> Hall of Fame
@@ -140,13 +160,17 @@ const GlobalLeaderboard: React.FC<GlobalLeaderboardProps> = ({ onDataLoaded }) =
         <div className="point-info">
           * 1st: 3pts | 2nd: 2pts | 3rd: 1pt
         </div>
-        <button className="refresh-btn" onClick={calculateGlobalRanking}>
-          🔄 Sync Stats
-        </button>
+        <div className="refresh-area">
+          {lastUpdated && (
+            <span className="last-updated-label">Updated {lastUpdated}</span>
+          )}
+          <button className="refresh-btn" onClick={handleRefresh} disabled={isSyncing}>
+            {isSyncing ? '⏳ Syncing...' : '🔄 Sync Stats'}
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
 export default GlobalLeaderboard;
-

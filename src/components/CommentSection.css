@@ -99,6 +99,10 @@
 .comment-author {
   font-weight: 700;
   color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
 }
 
 .comment-date {
@@ -115,4 +119,37 @@
   text-align: center;
   color: #666;
   padding: 20px;
+}
+
+.load-more-btn {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid rgba(0, 210, 255, 0.3);
+  border-radius: 8px;
+  color: #00d2ff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.load-more-btn:hover {
+  background: rgba(0, 210, 255, 0.08);
+  border-color: #00d2ff;
+}
+
+.comment-submit-error {
+  margin-top: 8px;
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.load-more-btn:disabled {
+  color: #555;
+  border-color: rgba(255, 255, 255, 0.1);
+  cursor: not-allowed;
 }

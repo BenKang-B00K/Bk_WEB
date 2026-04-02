@@ -1,4 +1,5 @@
 import React from 'react';
+import { games } from '../data/games';
 import './Leaderboard.css';
 
 interface LeaderboardEntry {
@@ -15,87 +16,21 @@ interface LeaderboardProps {
 }
 
 const Leaderboard: React.FC<LeaderboardProps> = ({ entries, gameId, currentNickname }) => {
-  const isGateOfHell = gameId === '1';
-  const isGalaxyLaunch = gameId === '2';
-  const isGemMerge = gameId === '5';
-  
-  let label = 'Score';
-  let unit = '';
-  let subLabel = '';
-  let subUnit = '';
-  let title = 'Global Leaderboard';
+  const lb = games.find(g => g.id === gameId)?.leaderboard;
 
-  if (isGateOfHell) {
-    label = 'Depth';
-    unit = ' Depth';
-    subLabel = '';
-    title = 'Survivor Leaderboard';
-  } else if (isGalaxyLaunch) {
-    label = 'Conquests';
-    unit = '';
-    subLabel = 'Max Planet Level';
-    subUnit = 'Lv.';
-    title = 'Ultimate Conqueror';
-  } else if (isGemMerge) {
-    label = 'Total Score';
-    unit = ' pts';
-    subLabel = 'Merges';
-    title = 'Master Merger Leaderboard';
-  } else if (gameId === '7') {
-    label = 'Level';
-    unit = ' level';
-    subLabel = 'Clicks';
-    subUnit = '';
-    title = 'Fastest Clicker Leaderboard';
-  } else if (gameId === '8') {
-    label = 'Win Rate';
-    unit = '%';
-    subLabel = 'Total Wins';
-    subUnit = '';
-    title = 'Omok Grandmaster Leaderboard';
-  } else if (gameId === '9') {
-    label = 'Stage';
-    unit = '';
-    subLabel = 'Artifacts';
-    subUnit = '';
-    title = 'Void Survivor Leaderboard';
-  } else if (gameId === '10') {
-    label = 'Waves';
-    unit = ' waves';
-    subLabel = 'Battles';
-    subUnit = '';
-    title = 'Eternal War Leaderboard';
-  } else if (gameId === '11') {
-    label = 'Chapters';
-    unit = ' Chapters';
-    subLabel = 'Stages';
-    subUnit = '';
-    title = 'Dicefall Chronicles Leaderboard';
-  } else if (gameId === '12') {
-    label = 'Heroes';
-    unit = ' heroes';
-    subLabel = 'Monsters';
-    subUnit = '';
-    title = 'Heroes of the Last Nexus Leaderboard';
-  } else if (gameId === '13') {
-    label = 'Total Stars';
-    unit = ' Stars';
-    subLabel = 'Receipts';
-    subUnit = '';
-    title = 'Timing Chef Master Leaderboard';
-  }
+  const label      = lb?.primaryLabel   ?? 'Score';
+  const unit       = lb?.primaryUnit    ?? '';
+  const subLabel   = lb?.secondaryLabel ?? '';
+  const subUnit    = lb?.secondaryUnit  ?? '';
+  const title      = lb?.title          ?? 'Global Leaderboard';
+  const subSortAsc = lb?.subSortAsc     ?? false;
 
-  // Common Sort Logic: Score first (DESC)
-  // Tie-breaker: SubScore (DESC by default, ASC for Gem Merge)
   const top10 = [...entries].sort((a, b) => {
-    if (b.score !== a.score) {
-      return b.score - a.score;
-    }
-    if (isGemMerge) {
-      // For Gem Merge, fewer merges for the same score is better
-      return (a.subScore || 0) - (b.subScore || 0);
-    }
-    return (b.subScore || 0) - (a.subScore || 0);
+    if (b.score !== a.score) return b.score - a.score;
+    // subSortAsc=true: fewer is better (e.g. Gem Merge — fewer merges for same score)
+    return subSortAsc
+      ? (a.subScore || 0) - (b.subScore || 0)
+      : (b.subScore || 0) - (a.subScore || 0);
   }).slice(0, 10);
 
   const getRankIcon = (rank: number) => {
@@ -112,12 +47,7 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ entries, gameId, currentNickn
     return "";
   };
 
-  const podiumPlayers = [
-    top10[1], // 2nd
-    top10[0], // 1st
-    top10[2], // 3rd
-  ].filter(p => p !== undefined);
-
+  const podiumPlayers = [top10[1], top10[0], top10[2]].filter(p => p !== undefined);
   const remainingPlayers = top10.slice(3);
 
   return (
@@ -132,7 +62,7 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ entries, gameId, currentNickn
             {podiumPlayers.map((entry, index) => {
               const originalRank = top10.indexOf(entry) + 1;
               const isMe = entry.name === currentNickname;
-              
+
               return (
                 <div key={index} className={`podium-item rank-${originalRank} ${isMe ? 'is-me' : ''}`}>
                   <div className="podium-crown">{originalRank === 1 ? '👑' : ''}</div>

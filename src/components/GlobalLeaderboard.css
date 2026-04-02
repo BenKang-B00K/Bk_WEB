@@ -84,7 +84,7 @@
   height: 40px;
   margin-bottom: 10px;
   filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5));
-  animation: float 3s ease-in-out infinite;
+  animation: float 4s ease-in-out infinite;
 }
 
 .podium-rank-badge {
@@ -239,10 +239,29 @@
   transition: all 0.3s;
 }
 
-.refresh-btn:hover {
+.refresh-btn:hover:not(:disabled) {
   background: rgba(255, 255, 255, 0.05);
   color: #fff;
   border-color: rgba(0, 242, 255, 0.3);
+}
+
+.refresh-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.refresh-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.last-updated-label {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.25);
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 /* Loader */

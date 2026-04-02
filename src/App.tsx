@@ -1,15 +1,20 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import GamePlayer from './pages/GamePlayer';
-import About from './pages/About';
-import Privacy from './pages/Privacy';
-import Contact from './pages/Contact';
-import HallOfFame from './pages/HallOfFame';
-import MyGames from './pages/MyGames';
-import NotFound from './pages/NotFound';
 import InstallPWA from './components/InstallPWA';
 import UpdateNotification from './components/UpdateNotification';
+import ErrorBoundary from './components/ErrorBoundary';
+import ScrollToTop from './components/ScrollToTop';
+
+// Lazy-load all pages except Home so the initial bundle stays small.
+// Each page's JS (and its unique imports) loads only when first navigated to.
+const GamePlayer  = lazy(() => import('./pages/GamePlayer'));
+const About       = lazy(() => import('./pages/About'));
+const Privacy     = lazy(() => import('./pages/Privacy'));
+const Contact     = lazy(() => import('./pages/Contact'));
+const HallOfFame  = lazy(() => import('./pages/HallOfFame'));
+const MyGames     = lazy(() => import('./pages/MyGames'));
+const NotFound    = lazy(() => import('./pages/NotFound'));
 
 function App() {
   useEffect(() => {
@@ -25,16 +30,21 @@ function App() {
   return (
     <Router>
       <div className="app-main-layout">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/play/:id" element={<GamePlayer />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/hall-of-fame" element={<HallOfFame />} />
-          <Route path="/my-games" element={<MyGames />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <ScrollToTop />
+        <ErrorBoundary>
+        <Suspense fallback={<div style={{ minHeight: '100vh' }} />}>
+          <Routes>
+            <Route path="/"             element={<Home />} />
+            <Route path="/play/:slug"    element={<GamePlayer />} />
+            <Route path="/about"        element={<About />} />
+            <Route path="/privacy"      element={<Privacy />} />
+            <Route path="/contact"      element={<Contact />} />
+            <Route path="/hall-of-fame" element={<HallOfFame />} />
+            <Route path="/my-games"     element={<MyGames />} />
+            <Route path="*"             element={<NotFound />} />
+          </Routes>
+        </Suspense>
+        </ErrorBoundary>
         <InstallPWA />
         <UpdateNotification />
       </div>

@@ -1,7 +1,18 @@
 import gamesData from './games.json';
 
+export interface LeaderboardConfig {
+  title: string;
+  primaryLabel: string;
+  primaryUnit: string;
+  secondaryLabel: string;
+  secondaryUnit: string;
+  dualSort: boolean;
+  subSortAsc: boolean;
+}
+
 export interface Game {
   id: string;
+  slug: string;
   title: string;
   titleKo?: string;
   description: string;
@@ -22,6 +33,7 @@ export interface Game {
   aspectRatio?: string; 
   status?: string;
   isOriginal?: boolean;
+  leaderboard?: LeaderboardConfig;
 }
 
 const allGames: Game[] = gamesData as Game[];

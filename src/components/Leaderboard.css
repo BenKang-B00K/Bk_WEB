@@ -4,6 +4,7 @@
   padding: 40px;
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
   width: 100%;
 }
 
@@ -151,8 +152,9 @@
 }
 
 .rank-row:hover {
-  background: rgba(255, 255, 255, 0.05);
-  transform: translateX(5px);
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateX(5px) translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .rank-row.is-me {
@@ -219,4 +221,23 @@
   .podium-item .player-name { font-size: 0.8rem; }
   .podium-item .player-score { font-size: 0.75rem; }
   .player-subscore { font-size: 0.65rem; }
+
+  .leaderboard-container {
+    padding: 20px 12px;
+  }
+
+  .leaderboard-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .rank-cell, .player-cell, .score-cell, .subscore-cell {
+    padding: 12px 10px;
+    font-size: 0.85rem;
+  }
+
+  .rank-row:hover {
+    transform: none;
+  }
 }

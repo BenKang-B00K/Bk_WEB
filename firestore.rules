@@ -6,28 +6,52 @@ service cloud.firestore {
     match /leaderboards/{document} {
       // Anyone can read the leaderboards
       allow read: if true;
-      
-      // Anyone can create a new score entry
-      allow create: if true;
-      
-      // Anyone can update an entry (used for updating personal bests)
-      // Ideally, we'd check if the name matches, but since we don't have Auth, 
-      // we allow it. The client code only updates if the new score is higher.
-      allow update: if true;
+
+      // Create: validate all required fields and types
+      allow create: if request.resource.data.keys().hasAll(['gameId', 'name', 'score', 'createdAt'])
+        && request.resource.data.score is number
+        && request.resource.data.score >= 0
+        && request.resource.data.score <= 10000000
+        && (
+          !request.resource.data.keys().hasAny(['subScore'])
+          || (request.resource.data.subScore is number && request.resource.data.subScore >= 0)
+        )
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 30
+        && request.resource.data.gameId is string;
+
+      // Update: name and gameId must not change, score/subScore must be valid
+      allow update: if resource.data.name == request.resource.data.name
+        && resource.data.gameId == request.resource.data.gameId
+        && request.resource.data.score is number
+        && request.resource.data.score >= 0
+        && request.resource.data.score <= 10000000
+        && (
+          !request.resource.data.keys().hasAny(['subScore'])
+          || (request.resource.data.subScore is number && request.resource.data.subScore >= 0)
+        );
     }
-    
+
     // Comments collection
     match /comments/{document} {
       // Anyone can read comments
       allow read: if true;
-      
-      // Anyone can post a comment
-      allow create: if true;
-      
-      // Delete/Update not allowed for now
+
+      // Create: validate required fields, text/nickname length
+      allow create: if request.resource.data.keys().hasAll(['gameId', 'nickname', 'text', 'createdAt'])
+        && request.resource.data.text is string
+        && request.resource.data.text.size() > 0
+        && request.resource.data.text.size() <= 300
+        && request.resource.data.nickname is string
+        && request.resource.data.nickname.size() > 0
+        && request.resource.data.nickname.size() <= 30
+        && request.resource.data.gameId is string;
+
+      // Delete/Update not allowed
       allow update, delete: if false;
     }
-    
+
     // Default deny for everything else
     match /{document=**} {
       allow read, write: if false;

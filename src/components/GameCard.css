@@ -48,6 +48,46 @@
   overflow: hidden;
 }
 
+.continue-badge {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 242, 255, 0.15);
+  border: 1px solid rgba(0, 242, 255, 0.5);
+  color: #00f2ff;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  z-index: 3;
+  backdrop-filter: blur(4px);
+  white-space: nowrap;
+}
+
+/* Skeleton shimmer — shown until the thumbnail loads */
+.card-image.img-loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #0f0f12 25%,
+    #1c1c22 50%,
+    #0f0f12 75%
+  );
+  background-size: 200% 100%;
+  animation: card-shimmer 1.4s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes card-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 .card-image img {
   width: 100%;
   height: 100%;
@@ -72,7 +112,7 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
   color: #1a1a1a;
   padding: 4px 12px;
   border-radius: 4px;
@@ -81,8 +121,8 @@
   z-index: 2;
   text-transform: uppercase;
   letter-spacing: 1px;
-  box-shadow: 0 4px 10px rgba(246, 211, 101, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .mobile-friendly-badge {
@@ -172,6 +212,12 @@
   font-weight: 800;
   text-transform: uppercase;
   border: 1px solid rgba(0, 242, 255, 0.3);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.game-card:hover .genre-tag {
+  background: rgba(0, 242, 255, 0.18);
+  border-color: rgba(0, 242, 255, 0.55);
 }
 
 .play-btn {
@@ -180,14 +226,21 @@
   padding: 10px 24px;
   border-radius: 30px;
   font-weight: 700;
-  transform: scale(0.9);
+  transform: scale(1);
   transition: transform 0.3s ease;
+}
+
+.game-card:hover .play-btn {
+  transform: scale(1.08);
 }
 
 .card-info h3 {
   font-size: 1.2rem;
   margin-bottom: 8px;
   color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-info p {

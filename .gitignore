@@ -17,6 +17,10 @@ dist-ssr
 .env.test.local
 .env.production.local
 
+# Firebase service account keys (NEVER commit these)
+*-firebase-adminsdk-*.json
+service-account*.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

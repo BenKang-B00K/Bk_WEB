@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { Game } from '../data/games';
 import './GameCard.css';
@@ -6,11 +6,14 @@ import './GameCard.css';
 interface GameCardProps {
   game: Game;
   onProductionClick?: () => void;
+  isRecentlyPlayed?: boolean;
 }
 
-const GameCard: React.FC<GameCardProps> = ({ game, onProductionClick }) => {
-  const thumbnailUrl = game.thumbnail.startsWith('http') 
-    ? game.thumbnail 
+const GameCard: React.FC<GameCardProps> = ({ game, onProductionClick, isRecentlyPlayed = false }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const thumbnailUrl = game.thumbnail.startsWith('http')
+    ? game.thumbnail
     : `${import.meta.env.BASE_URL}${game.thumbnail}`;
 
   const handleClick = (e: React.MouseEvent) => {
@@ -36,9 +39,13 @@ const GameCard: React.FC<GameCardProps> = ({ game, onProductionClick }) => {
   const languageBadge = getLanguageBadge();
 
   return (
-    <Link to={`/play/${game.id}`} className="game-card" onClick={handleClick}>
-      <div className="card-image">
-        <img src={thumbnailUrl} alt={game.title} />
+    <Link to={`/play/${game.slug}`} className="game-card" onClick={handleClick}>
+      <div className={`card-image${imageLoaded ? '' : ' img-loading'}`}>
+        <img
+          src={thumbnailUrl}
+          alt={game.title}
+          onLoad={() => setImageLoaded(true)}
+        />
         {game.isOriginal && (
           <div className="original-badge">Original</div>
         )}
@@ -53,8 +60,11 @@ const GameCard: React.FC<GameCardProps> = ({ game, onProductionClick }) => {
             {game.status}
           </div>
         )}
+        {isRecentlyPlayed && (
+          <div className="continue-badge">▶ Continue</div>
+        )}
         <div className="card-overlay">
-          <button className="play-btn">Play Now</button>
+          <button className="play-btn">{isRecentlyPlayed ? '▶ Resume' : 'Play Now'}</button>
         </div>
       </div>
       <div className="card-info">

@@ -7,7 +7,8 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.12);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
 }
 
 .navbar-content {
@@ -35,15 +36,15 @@
   content: '🎮';
   font-size: 1.1rem;
   margin-right: 8px;
-  filter: drop-shadow(0 0 5px #00f2ff);
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.6));
   transition: transform 0.3s ease;
 }
 
 .logo span {
-  background: linear-gradient(90deg, #00f2ff, #7000ff);
+  background: var(--gold-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 8px rgba(0, 242, 255, 0.4));
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.35));
   margin-left: 2px;
 }
 
@@ -54,10 +55,11 @@
 
 .logo:hover::before {
   transform: rotate(-15deg) scale(1.2);
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.9));
 }
 
 .logo:hover span {
-  filter: drop-shadow(0 0 12px rgba(0, 242, 255, 0.6));
+  filter: drop-shadow(0 0 14px rgba(255, 215, 0, 0.6));
 }
 
 /* Desktop Nav Links */

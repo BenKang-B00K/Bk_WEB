@@ -1,6 +1,7 @@
 [
   {
     "id": "1",
+    "slug": "gate-of-hell",
     "title": "Gate of Hell: Rise of Demons",
     "titleKo": "지옥의 문: 악마의 부활",
     "description": "An intense action survival game where you must hold back the tides of hell.",
@@ -38,10 +39,20 @@
     "gameUrl": "https://gate-of-hell.pages.dev/",
     "aspectRatio": "9/16",
     "status": "PLAYABLE",
-    "isOriginal": true
+    "isOriginal": true,
+    "leaderboard": {
+      "title": "Survivor Leaderboard",
+      "primaryLabel": "Depth",
+      "primaryUnit": " Depth",
+      "secondaryLabel": "",
+      "secondaryUnit": "",
+      "dualSort": false,
+      "subSortAsc": false
+    }
   },
   {
     "id": "2",
+    "slug": "galaxy-launch",
     "title": "Galaxy Launch: Infinite Fleet",
     "titleKo": "갤럭시 런칭: 인피니트 플릿",
     "description": "An addictive clicker game where you expand your fleet and conquer the galaxy.",
@@ -79,10 +90,20 @@
     "gameUrl": "https://galaxylaunch.onrender.com/",
     "aspectRatio": "16/9",
     "status": "PLAYABLE",
-    "isOriginal": true
+    "isOriginal": true,
+    "leaderboard": {
+      "title": "Ultimate Conqueror",
+      "primaryLabel": "Conquests",
+      "primaryUnit": "",
+      "secondaryLabel": "Max Planet Level",
+      "secondaryUnit": "Lv.",
+      "dualSort": true,
+      "subSortAsc": false
+    }
   },
   {
     "id": "3",
+    "slug": "idle-avatar-rpg",
     "title": "Idle Avatar RPG",
     "titleKo": "방치형 아바타 RPG",
     "description": "Develop your own avatar and explore a mysterious world that grows automatically.",
@@ -122,6 +143,7 @@
   },
   {
     "id": "5",
+    "slug": "gem-merge",
     "title": "GEM MERGE",
     "titleKo": "젬 머지",
     "description": "A strategic puzzle game where you merge colorful gems to create bigger ones.",
@@ -159,10 +181,20 @@
     "gameUrl": "https://mergegame.pages.dev/",
     "aspectRatio": "16/16",
     "status": "PLAYABLE",
-    "isOriginal": true
+    "isOriginal": true,
+    "leaderboard": {
+      "title": "Master Merger Leaderboard",
+      "primaryLabel": "Total Score",
+      "primaryUnit": " pts",
+      "secondaryLabel": "Merges",
+      "secondaryUnit": "",
+      "dualSort": false,
+      "subSortAsc": true
+    }
   },
   {
     "id": "6",
+    "slug": "trade-tycoon",
     "title": "Trade Tycoon - Civilization",
     "titleKo": "트레이드 타이쿤 - 문명",
     "description": "Build your empire, trade resources, and lead your civilization to prosperity.",
@@ -202,6 +234,7 @@
   },
   {
     "id": "7",
+    "slug": "15s-click-challenge",
     "title": "15s Click Challenge",
     "titleKo": "15초 클릭 챌린지",
     "description": "Test your clicking speed in this intense 15-second challenge!",
@@ -239,10 +272,20 @@
     "gameUrl": "https://clickthetarget.pages.dev/",
     "aspectRatio": "1/1",
     "status": "PLAYABLE",
-    "isOriginal": true
+    "isOriginal": true,
+    "leaderboard": {
+      "title": "Fastest Clicker Leaderboard",
+      "primaryLabel": "Level",
+      "primaryUnit": " level",
+      "secondaryLabel": "Clicks",
+      "secondaryUnit": "",
+      "dualSort": true,
+      "subSortAsc": false
+    }
   },
   {
     "id": "8",
+    "slug": "omok",
     "title": "OMOK",
     "titleKo": "오목",
     "description": "A masterpiece of strategy and intuition. Master the ancient art of Five-in-a-Row.",
@@ -280,10 +323,20 @@
     "gameUrl": "https://omok-96n.pages.dev/",
     "aspectRatio": "1/1",
     "status": "PLAYABLE",
-    "isOriginal": true
+    "isOriginal": true,
+    "leaderboard": {
+      "title": "Omok Grandmaster Leaderboard",
+      "primaryLabel": "Win Rate",
+      "primaryUnit": "%",
+      "secondaryLabel": "Total Wins",
+      "secondaryUnit": "",
+      "dualSort": true,
+      "subSortAsc": false
+    }
   },
   {
     "id": "9",
+    "slug": "40th-century-void-survivor",
     "title": "40th Century: Void Survivor",
     "titleKo": "40세기: 보이드 서바이버",
     "description": "Survive in the void of the 40th century. Battle cosmic horrors and collect ancient artifacts.",
@@ -321,10 +374,20 @@
     "gameUrl": "https://neuralsurvivorbk.pages.dev/",
     "aspectRatio": "16/9",
     "status": "PLAYABLE",
-    "isOriginal": true
+    "isOriginal": true,
+    "leaderboard": {
+      "title": "Void Survivor Leaderboard",
+      "primaryLabel": "Stage",
+      "primaryUnit": "",
+      "secondaryLabel": "Artifacts",
+      "secondaryUnit": "",
+      "dualSort": true,
+      "subSortAsc": false
+    }
   },
   {
     "id": "10",
+    "slug": "endless-war",
     "title": "Endless War: Holy vs Hell",
     "titleKo": "엔들리스 워: 홀리 vs 헬",
     "description": "An epic simulation of the eternal conflict between heaven and hell.",
@@ -360,10 +423,20 @@
     "gameUrl": "https://16bed324.endlesswarbk.pages.dev/",
     "aspectRatio": "16/9",
     "status": "PLAYABLE",
-    "isOriginal": true
+    "isOriginal": true,
+    "leaderboard": {
+      "title": "Eternal War Leaderboard",
+      "primaryLabel": "Waves",
+      "primaryUnit": " waves",
+      "secondaryLabel": "Battles",
+      "secondaryUnit": "",
+      "dualSort": true,
+      "subSortAsc": false
+    }
   },
   {
     "id": "11",
+    "slug": "dicefall-chronicles",
     "title": "Dicefall Chronicles",
     "titleKo": "다이스폴 크로니클",
     "description": "A strategic dice-building roguelike adventure.",
@@ -399,10 +472,20 @@
     "gameUrl": "https://dicefall-chronicles-mobile-bk.pages.dev/",
     "aspectRatio": "16/9",
     "status": "PLAYABLE",
-    "isOriginal": true
+    "isOriginal": true,
+    "leaderboard": {
+      "title": "Dicefall Chronicles Leaderboard",
+      "primaryLabel": "Chapters",
+      "primaryUnit": " Chapters",
+      "secondaryLabel": "Stages",
+      "secondaryUnit": "",
+      "dualSort": true,
+      "subSortAsc": false
+    }
   },
   {
     "id": "12",
+    "slug": "heroes-of-the-last-nexus",
     "title": "Heroes of the Last Nexus",
     "titleKo": "히어로즈 오브 더 라스트 넥서스",
     "description": "A strategic hero collection RPG where you must gather heroes to defend the Last Nexus.",
@@ -439,10 +522,20 @@
     "gameUrl": "https://heroes-of-the-last-nexus-bk.pages.dev/",
     "aspectRatio": "16/9",
     "status": "IN PRODUCTION",
-    "isOriginal": true
+    "isOriginal": true,
+    "leaderboard": {
+      "title": "Heroes of the Last Nexus Leaderboard",
+      "primaryLabel": "Heroes",
+      "primaryUnit": " heroes",
+      "secondaryLabel": "Monsters",
+      "secondaryUnit": "",
+      "dualSort": true,
+      "subSortAsc": false
+    }
   },
   {
     "id": "13",
+    "slug": "timing-chef",
     "title": "Timing Chef",
     "titleKo": "타이밍 쉐프",
     "description": "Master the art of perfect timing in the kitchen!",
@@ -478,10 +571,20 @@
     "gameUrl": "https://timing-chef-bk.pages.dev/",
     "aspectRatio": "9/16",
     "status": "PLAYABLE",
-    "isOriginal": true
+    "isOriginal": true,
+    "leaderboard": {
+      "title": "Timing Chef Master Leaderboard",
+      "primaryLabel": "Total Stars",
+      "primaryUnit": " Stars",
+      "secondaryLabel": "Receipts",
+      "secondaryUnit": "",
+      "dualSort": true,
+      "subSortAsc": false
+    }
   },
   {
     "id": "14",
+    "slug": "fruit-frenzy",
     "title": "Fruit Frenzy",
     "titleKo": "프루트 프렌지",
     "description": "A juicy and addictive arcade game where you collect fruits to complete your encyclopedia!",
@@ -517,6 +620,15 @@
     "gameUrl": "https://fruit-frenzy-bk.pages.dev/",
     "aspectRatio": "9/16",
     "status": "PLAYABLE",
-    "isOriginal": true
+    "isOriginal": true,
+    "leaderboard": {
+      "title": "Fruit Frenzy Leaderboard",
+      "primaryLabel": "Score",
+      "primaryUnit": "",
+      "secondaryLabel": "Fruits",
+      "secondaryUnit": "",
+      "dualSort": true,
+      "subSortAsc": false
+    }
   }
 ]
