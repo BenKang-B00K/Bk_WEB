@@ -450,6 +450,9 @@ const GamePlayer: React.FC = () => {
               {game.features?.includes('PC Only') && (
                 <span className="mobile-badge pc-only">🖥️ PC Only</span>
               )}
+              {game.features?.some(f => f.startsWith('Local Co-op')) && (
+                <span className="mobile-badge coop">🎮 Local Co-op</span>
+              )}
               {lastSave && <span className="save-badge">{t.last}: {lastSave}</span>}
             </div>
           </div>

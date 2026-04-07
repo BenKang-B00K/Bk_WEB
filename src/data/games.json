@@ -692,5 +692,47 @@
       "dualSort": true,
       "subSortAsc": false
     }
+  },
+  {
+    "id": "16",
+    "slug": "triangle-battle",
+    "language": "KO/EN",
+    "title": "Triangle Battle!",
+    "titleKo": "트라이앵글 배틀!",
+    "description": "A fast-paced local multiplayer arcade game where 1-4 players compete to form triangles and outsmart each other.",
+    "descriptionKo": "1~4명의 플레이어가 삼각형을 만들며 경쟁하는 로컬 멀티플레이어 아케이드 게임입니다.",
+    "fullDescription": "\n      Triangle Battle! is a vibrant local multiplayer arcade game designed for 1 to 4 players on a single device. The goal is simple — form triangles faster than your opponents — but the competition is fierce.\n      Players move across the board, claiming points and strategically blocking each other. Quick reflexes and spatial awareness are the keys to victory. The game supports both keyboard and touch controls, making it perfect for any device.\n      Whether you're playing solo to practice or battling friends on the couch, Triangle Battle! delivers fast rounds, colorful visuals, and endless replayability. Gather your friends and find out who's the triangle champion!\n    ",
+    "fullDescriptionKo": "\n      트라이앵글 배틀!은 하나의 기기에서 1~4명이 함께 즐길 수 있는 로컬 멀티플레이어 아케이드 게임입니다. 목표는 간단합니다 — 상대보다 빠르게 삼각형을 만드는 것. 하지만 경쟁은 치열합니다.\n      플레이어들은 보드 위를 이동하며 포인트를 획득하고 전략적으로 상대를 방해합니다. 빠른 반사 신경과 공간 인지 능력이 승리의 열쇠입니다. 키보드와 터치 조작을 모두 지원해 어떤 기기에서든 즐길 수 있습니다.\n      혼자 연습하거나 친구들과 함께 대결하세요. 트라이앵글 배틀!은 빠른 라운드, 화려한 비주얼, 끝없는 리플레이를 제공합니다. 친구를 모아 누가 삼각형 챔피언인지 가려보세요!\n    ",
+    "controls": "Player 1: WASD / Player 2: Arrow Keys / Player 3-4: On-screen touch buttons / Mobile: Touch controls for all players",
+    "controlsKo": "플레이어 1: WASD / 플레이어 2: 방향키 / 플레이어 3-4: 화면 터치 버튼 / 모바일: 전원 터치 조작",
+    "tips": "Focus on claiming corner positions early — they give you more triangle-forming opportunities. Watch your opponents' movements and block their potential triangles before they complete them. In 3-4 player games, temporary alliances can help you take down the leader.",
+    "tipsKo": "초반에 코너 위치를 확보하세요 — 삼각형을 만들 기회가 더 많아집니다. 상대의 움직임을 관찰하고 삼각형이 완성되기 전에 방해하세요. 3~4인 게임에서는 임시 동맹으로 선두를 견제할 수 있습니다.",
+    "lore": "\n      In the neon-lit arenas of the Grid, geometric warriors compete for supremacy. The ancient Triangle Protocol demands that only those who can form the perfect shape will ascend.\n      Each match is a test of speed, strategy, and spatial mastery. The Grid remembers every triangle ever formed, and the greatest players are immortalized in its luminous halls.\n    ",
+    "loreKo": "\n      네온 불빛으로 빛나는 그리드 아레나에서 기하학 전사들이 패권을 다툽니다. 고대의 삼각형 프로토콜은 완벽한 도형을 만들 수 있는 자만이 승천할 수 있다고 말합니다.\n      매 경기는 속도, 전략, 공간 장악의 시험입니다. 그리드는 만들어진 모든 삼각형을 기억하며, 가장 위대한 플레이어들은 빛나는 전당에 영원히 새겨집니다.\n    ",
+    "features": [
+      "Local Co-op 1~4 Players",
+      "Fast-Paced Arcade Gameplay",
+      "Keyboard & Touch Support",
+      "Colorful Neon Visuals",
+      "Quick Rounds & High Replayability",
+      "Web & Mobile Friendly"
+    ],
+    "featuresKo": [
+      "로컬 코옵 1~4인",
+      "빠른 아케이드 게임플레이",
+      "키보드 & 터치 지원",
+      "화려한 네온 비주얼",
+      "빠른 라운드 & 높은 리플레이성",
+      "웹 & 모바일 지원"
+    ],
+    "thumbnail": "images/make_triangle.webp",
+    "genres": [
+      "Arcade",
+      "Local Co-op"
+    ],
+    "gameUrl": "https://make-triangle-bk.pages.dev/",
+    "aspectRatio": "16/9",
+    "status": "PLAYABLE",
+    "isOriginal": true
   }
 ]

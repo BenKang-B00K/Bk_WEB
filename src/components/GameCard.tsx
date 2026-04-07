@@ -45,6 +45,9 @@ const GameCard: React.FC<GameCardProps> = ({ game, onProductionClick, isRecently
         {game.features?.includes('PC Only') && (
           <div className="pc-only-badge">🖥️ PC Only</div>
         )}
+        {game.features?.some(f => f.startsWith('Local Co-op')) && (
+          <div className="coop-badge">🎮 Local Co-op</div>
+        )}
         {languageBadge && (
           <div className="language-badge">{languageBadge}</div>
         )}

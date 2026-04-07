@@ -161,6 +161,24 @@
   gap: 4px;
 }
 
+.coop-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  color: #a855f7;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  z-index: 2;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .language-badge {
   position: absolute;
   bottom: 10px;
