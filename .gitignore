@@ -35,6 +35,9 @@ leaderboard.txt
 # Claude Code local files
 .agents/
 skills-lock.json
+.claude/settings.local.json
+.claude/skills/*
+!.claude/skills/code-reviewer/
 
 # IDX cloud editor
 .idx/
