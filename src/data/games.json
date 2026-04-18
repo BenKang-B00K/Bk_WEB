@@ -823,5 +823,44 @@
     "aspectRatio": "16/9",
     "status": "PLAYABLE",
     "isOriginal": true
+  },
+  {
+    "id": "18",
+    "slug": "skyfall",
+    "language": "KO/EN",
+    "title": "Skyfall",
+    "titleKo": "스카이폴",
+    "description": "Dodge the falling obstacles and survive as long as you can in this fast-paced arcade game!",
+    "descriptionKo": "하늘에서 떨어지는 장애물을 피하며 가능한 오래 살아남으세요! 빠른 템포의 아케이드 게임입니다.",
+    "fullDescription": "Skyfall is a challenging survival arcade game that tests your reflexes and agility. As various objects descend from above, you must navigate through the storm and find the safest path. The intensity increases as you survive longer, pushing your limits. Compete for the highest survival time and master the art of dodging!",
+    "fullDescriptionKo": "스카이폴은 당신의 반사 신경과 민첩성을 테스트하는 도전적인 서바이벌 아케이드 게임입니다. 다양한 물체들이 위에서 아래로 떨어지는 가운데, 폭풍을 헤쳐나가며 가장 안전한 길을 찾아야 합니다. 생존 시간이 길어질수록 강도가 높아져 당신의 한계를 시험합니다. 최고의 생존 시간에 도전하고 회피의 기술을 마스터하세요!",
+    "controls": "Left/Right Arrows or A/D to move / Touch buttons on mobile",
+    "controlsKo": "왼쪽/오른쪽 방향키 또는 A/D 키로 이동 / 모바일에서는 터치 버튼 사용",
+    "tips": "Stay near the center for better movement options. Watch for the shadows to predict where objects will land. Practice makes perfect!",
+    "tipsKo": "가운데 근처에 머무르면 더 넓은 범위를 움직일 수 있습니다. 그림자를 보고 물체가 어디에 떨어질지 예측하세요. 연습만이 살 길입니다!",
+    "features": [
+      "Fast-paced Arcade Action",
+      "Increasing Difficulty Over Time",
+      "Responsive Keyboard & Touch Controls",
+      "Clean Visuals and Effects",
+      "Addictive High-Score Gameplay"
+    ],
+    "featuresKo": [
+      "빠른 템포의 아케이드 액션",
+      "시간에 따라 증가하는 난이도",
+      "반응성이 뛰어난 키보드 및 터치 조작",
+      "깔끔한 비주얼과 이펙트",
+      "중독성 있는 고득점 게임플레이"
+    ],
+    "thumbnail": "images/SkyFall_Banner.webp",
+    "genres": [
+      "Survival",
+      "Reflex",
+      "Arcade"
+    ],
+    "gameUrl": "https://skyfall-bk.pages.dev/",
+    "aspectRatio": "16/9",
+    "status": "PLAYABLE",
+    "isOriginal": true
   }
 ]
