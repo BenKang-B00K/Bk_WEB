@@ -14,8 +14,8 @@ const NotFound: React.FC = () => {
       <Navbar />
       <div className="container" style={{ paddingTop: '150px', textAlign: 'center', flex: 1 }}>
         <h1 style={{ fontSize: '5rem', color: '#00d2ff', marginBottom: '1rem' }}>404</h1>
-        <h2 style={{ fontSize: '2rem', color: '#fff', marginBottom: '2rem' }}>Universe Not Found</h2>
-        <p style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', marginBottom: '3rem' }}>
+        <h2 style={{ fontSize: '2rem', color: 'var(--text-primary)', marginBottom: '2rem' }}>Universe Not Found</h2>
+        <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)', marginBottom: '3rem' }}>
           It seems the gaming dimension you are looking for does not exist or has been moved.
         </p>
         <Link to="/" className="back-button-modern" style={{ display: 'inline-block', padding: '15px 30px', background: 'var(--primary-glow)', borderRadius: '30px', color: '#000', fontWeight: 'bold', textDecoration: 'none' }}>

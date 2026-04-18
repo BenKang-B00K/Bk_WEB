@@ -9,7 +9,8 @@
     <meta name="keywords" content="free games, browser games, online games, arcadedeck, play games online, free arcade, action games, rpg games, idle games" />
     <meta name="author" content="ArcadeDeck" />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#050507" />
+    <meta name="theme-color" content="#faf8fd" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#171424" media="(prefers-color-scheme: dark)" />
     <link rel="apple-touch-icon" href="/images/icon-192x192.webp" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -49,12 +50,25 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Theme boot — set data-theme before paint to avoid FOUC (default: dark) -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('arcadedeck-theme');
+          var theme = saved === 'light' || saved === 'dark' ? saved : 'dark';
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <noscript>
-      <div style="background:#050507;color:#fff;font-family:sans-serif;padding:40px;max-width:800px;margin:0 auto;">
+      <div style="background:#171424;color:#eaeaf0;font-family:sans-serif;padding:40px;max-width:800px;margin:0 auto;">
         <h1>ArcadeDeck — The Ultimate Free Browser Games Platform</h1>
         <p>Play the best free online browser games on ArcadeDeck. High-quality Action, RPG, Strategy, Idle, Roguelike, and Puzzle games with global leaderboards. No downloads required — just pure fun in your browser.</p>
         <h2>Our Games</h2>

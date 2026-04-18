@@ -47,10 +47,10 @@ const AdBanner: React.FC<AdBannerProps> = ({ slot, style, format = 'auto', place
 
   // Placeholder style
   const placeholderStyle: React.CSSProperties = {
-    background: 'rgba(255, 255, 255, 0.05)',
-    border: '1px dashed rgba(255, 255, 255, 0.2)',
+    background: 'var(--surface-2)',
+    border: '1px dashed var(--border-default)',
     borderRadius: '12px',
-    color: 'rgba(255, 255, 255, 0.3)',
+    color: 'var(--text-muted)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',

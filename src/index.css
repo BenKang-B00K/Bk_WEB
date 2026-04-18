@@ -1,26 +1,50 @@
-:root {
-  /* ── Color System ── */
-  --bg-color: #06060a;
-  --bg-elevated: #0c0c14;
-  --bg-surface: #12121e;
-  --card-bg: #0d0d16;
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
 
+:root,
+[data-theme="dark"] {
+  /* ── Base Surfaces (dark — default theme) ── */
+  --bg-color: #171424;
+  --bg-elevated: #1f1b32;
+  --bg-surface: #272240;
+  --card-bg: #221d36;
+
+  /* ── Primary: Cyan (neon, interactive) ── */
   --primary-color: #00e5ff;
   --secondary-accent: #00b8d4;
+
+  /* ── Secondary: Magenta (CTA accent) ── */
   --secondary-color: #e040fb;
   --accent-color: #7C3AED;
   --accent-rose: #F43F5E;
 
+  /* ── Text (light-on-dark) ── */
   --text-primary: #eaeaf0;
-  --text-secondary: #8b8fa3;
-  --text-muted: #5c6078;
+  --text-secondary: #b6b3c8;
+  --text-muted: #7d7a93;
 
-  --border-subtle: rgba(255, 255, 255, 0.05);
-  --border-default: rgba(255, 255, 255, 0.08);
-  --border-accent: rgba(0, 229, 255, 0.15);
+  /* ── Borders (alpha white over dark) ── */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.1);
+  --border-accent: rgba(0, 229, 255, 0.3);
 
+  /* ── Glows ── */
   --glow-color: rgba(0, 229, 255, 0.45);
-  --glow-subtle: rgba(0, 229, 255, 0.06);
+  --glow-subtle: rgba(0, 229, 255, 0.08);
+
+  /* ── Scrim / overlay alphas (theme-aware) ── */
+  --scrim-strong: rgba(23, 20, 36, 0.92);
+  --scrim-soft: rgba(23, 20, 36, 0.75);
+
+  /* ── Surface tints (subtle fills for inputs / hover states — invert with theme) ── */
+  --surface-1: rgba(255, 255, 255, 0.03);
+  --surface-2: rgba(255, 255, 255, 0.06);
+  --surface-3: rgba(255, 255, 255, 0.1);
+
+  /* ── Shadows (deep on dark bg) ── */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 20px var(--glow-subtle);
 
   /* Gold — premium/identity (use sparingly) */
   --gold: #f5c542;
@@ -40,9 +64,12 @@
   --warning: #f59e0b;
   --info: #3b82f6;
 
+  /* Signature brand gradient */
+  --brand-gradient: linear-gradient(135deg, #f5c542 0%, #ff8c00 40%, #e040fb 70%, #00e5ff 100%);
+
   /* ── Typography ── */
-  --font-display: 'Cinzel', serif;
-  --font-body: 'Cinzel', serif;
+  --font-display: 'Fredoka', system-ui, sans-serif;
+  --font-body: 'Fredoka', system-ui, sans-serif;
   --font-family: var(--font-body);
 
   /* Type Scale */
@@ -67,12 +94,6 @@
   --space-8: 40px;
   --space-9: 48px;
   --space-10: 64px;
-
-  /* ── Shadows ── */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
-  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.45);
-  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.55);
-  --shadow-glow: 0 0 20px var(--glow-subtle);
 
   /* ── Blur ── */
   --blur-sm: 8px;
@@ -101,6 +122,45 @@
   /* ── Transition ── */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Light theme overrides — apply via <html data-theme="light">
+   ═══════════════════════════════════════════════════════════════ */
+[data-theme="light"] {
+  --bg-color: #faf8fd;
+  --bg-elevated: #ffffff;
+  --bg-surface: #ddd5ec;
+  --card-bg: #ece6f5;
+
+  --primary-color: #00b8d4;
+  --secondary-accent: #0089a3;
+  --secondary-color: #c026d3;
+
+  --text-primary: #1a1430;
+  --text-secondary: #5a5378;
+  --text-muted: #8b85a8;
+
+  --border-subtle: rgba(26, 20, 48, 0.06);
+  --border-default: rgba(26, 20, 48, 0.12);
+  --border-accent: rgba(0, 184, 212, 0.4);
+
+  --glow-color: rgba(0, 184, 212, 0.4);
+  --glow-subtle: rgba(0, 184, 212, 0.08);
+
+  --scrim-strong: rgba(255, 255, 255, 0.92);
+  --scrim-soft: rgba(255, 255, 255, 0.75);
+
+  /* Surface tints (light: alpha-indigo) */
+  --surface-1: rgba(26, 20, 48, 0.03);
+  --surface-2: rgba(26, 20, 48, 0.06);
+  --surface-3: rgba(26, 20, 48, 0.1);
+
+  --shadow-sm: 0 2px 8px rgba(26, 20, 48, 0.08);
+  --shadow-md: 0 8px 24px rgba(26, 20, 48, 0.1);
+  --shadow-lg: 0 20px 48px rgba(26, 20, 48, 0.14);
+
+  --brand-gradient: linear-gradient(135deg, #f5c542 0%, #ff8c00 40%, #c026d3 70%, #00b8d4 100%);
 }
 
 html {
@@ -216,7 +276,7 @@ select:focus-visible {
 }
 
 .notification-toast.info {
-  background: rgba(15, 15, 25, 0.92);
+  background: var(--scrim-strong);
   color: var(--text-primary);
   border-color: var(--border-default);
 }

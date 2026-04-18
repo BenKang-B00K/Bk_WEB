@@ -1,6 +1,6 @@
 .leaderboard-container {
   margin-top: 60px;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--surface-1);
   padding: 40px;
   border-radius: 30px;
   border: 1px solid var(--border-subtle);
@@ -82,7 +82,7 @@
   display: block;
   font-weight: 700;
   font-size: 1rem;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 4px;
   white-space: nowrap;
   overflow: hidden;
@@ -113,12 +113,12 @@
 .podium-base {
   width: 100%;
   border-radius: 10px 10px 0 0;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--surface-2);
   border: 1px solid var(--border-default);
   border-bottom: none;
 }
 
-.podium-item.rank-1 .podium-base { height: 100px; background: linear-gradient(to top, rgba(255, 215, 0, 0.1), rgba(255, 255, 255, 0.05)); }
+.podium-item.rank-1 .podium-base { height: 100px; background: linear-gradient(to top, rgba(255, 215, 0, 0.1), var(--surface-2)); }
 .podium-item.rank-2 .podium-base { height: 70px; }
 .podium-item.rank-3 .podium-base { height: 50px; }
 
@@ -147,12 +147,12 @@
 }
 
 .rank-row {
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--surface-1);
   transition: all 0.2s;
 }
 
 .rank-row:hover {
-  background: rgba(255, 255, 255, 0.07);
+  background: var(--surface-3);
   transform: translateX(5px) translateY(-1px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
@@ -186,7 +186,7 @@
 
 .player-name-text {
   font-weight: 600;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .me-badge {

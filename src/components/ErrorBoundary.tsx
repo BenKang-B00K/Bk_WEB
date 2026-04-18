@@ -28,8 +28,8 @@ class ErrorBoundary extends Component<Props, State> {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          background: '#050507',
-          color: '#fff',
+          background: 'var(--bg-color)',
+          color: 'var(--text-primary)',
           gap: '16px',
           textAlign: 'center',
           padding: '20px'

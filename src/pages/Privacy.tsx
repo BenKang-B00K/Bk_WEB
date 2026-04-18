@@ -14,10 +14,10 @@ const Privacy: React.FC = () => {
         <meta property="og:url" content="https://arcadedeck.net/privacy" />
       </Helmet>
       <Navbar />
-      <div className="container" style={{ paddingTop: '120px', flex: 1, color: '#fff', paddingBottom: '60px' }}>
+      <div className="container" style={{ paddingTop: '120px', flex: 1, color: 'var(--text-primary)', paddingBottom: '60px' }}>
         <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Privacy <span style={{ color: '#00d2ff' }}>Policy</span></h1>
-        <p style={{ color: 'rgba(255,255,255,0.6)', marginBottom: '2rem' }}>Last Updated: April 16, 2026</p>
-        <div style={{ lineHeight: '1.8', fontSize: '1rem', maxWidth: '900px', background: 'rgba(255,255,255,0.05)', padding: '40px', borderRadius: '15px' }}>
+        <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>Last Updated: April 16, 2026</p>
+        <div style={{ lineHeight: '1.8', fontSize: '1rem', maxWidth: '900px', background: 'var(--surface-2)', padding: '40px', borderRadius: '15px' }}>
           <h2>1. Introduction</h2>
           <p>ArcadeDeck ("we," "us," or "our") operates the website <strong>arcadedeck.net</strong> (the "Service"). This Privacy Policy explains what information we collect when you use ArcadeDeck, how we use it, who we share it with, and the choices you have. By accessing or using the Service, you agree to the practices described below.</p>
 

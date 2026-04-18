@@ -1,7 +1,7 @@
 .my-games-page {
   min-height: 100vh;
-  background-color: #0a0e14;
-  color: #fff;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
   padding-bottom: 50px;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .my-games-header .subtitle {
-  color: #aaa;
+  color: var(--text-muted);
   font-size: 1.1rem;
   margin-bottom: 20px;
 }
@@ -68,7 +68,7 @@
 }
 
 .section-desc {
-  color: #888;
+  color: var(--text-muted);
   margin-bottom: 20px;
 }
 
@@ -80,10 +80,10 @@
 
 .my-game-card {
   position: relative;
-  background: #161b22;
+  background: var(--card-bg);
   border-radius: 15px;
   overflow: hidden;
-  border: 1px solid #30363d;
+  border: 1px solid var(--border-default);
   transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
@@ -99,7 +99,7 @@
   position: absolute;
   top: 15px;
   right: 15px;
-  background: rgba(0, 0, 0, 0.7);
+  background: var(--scrim-soft);
   padding: 5px 12px;
   border-radius: 20px;
   display: flex;
@@ -143,7 +143,7 @@
 
 .score-label {
   font-size: 0.8rem;
-  color: #888;
+  color: var(--text-muted);
   text-transform: uppercase;
 }
 
@@ -172,17 +172,17 @@
 .mini-game-card {
   display: flex;
   align-items: center;
-  background: #161b22;
+  background: var(--card-bg);
   padding: 12px 20px;
   border-radius: 10px;
   text-decoration: none;
   color: inherit;
-  border: 1px solid #30363d;
+  border: 1px solid var(--border-default);
   transition: background 0.2s;
 }
 
 .mini-game-card:hover {
-  background: #1c2128;
+  background: var(--bg-elevated);
 }
 
 .mini-game-card img {
@@ -203,10 +203,10 @@
 
 .genre-tag {
   font-size: 0.7rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--surface-2);
   padding: 2px 8px;
   border-radius: 4px;
-  color: #aaa;
+  color: var(--text-muted);
 }
 
 .go-arrow {
@@ -215,12 +215,12 @@
 }
 
 .empty-state {
-  background: #161b22;
+  background: var(--card-bg);
   padding: 40px;
   border-radius: 15px;
   text-align: center;
-  color: #888;
-  border: 1px dashed #30363d;
+  color: var(--text-muted);
+  border: 1px dashed var(--border-default);
 }
 
 @media (max-width: 768px) {

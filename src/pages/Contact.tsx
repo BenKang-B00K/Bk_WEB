@@ -14,20 +14,20 @@ const Contact: React.FC = () => {
         <meta property="og:url" content="https://arcadedeck.net/contact" />
       </Helmet>
       <Navbar />
-      <div className="container" style={{ paddingTop: '120px', flex: 1, color: '#fff' }}>
+      <div className="container" style={{ paddingTop: '120px', flex: 1, color: 'var(--text-primary)' }}>
         <h1 style={{ fontSize: '3rem', marginBottom: '2rem' }}>Contact <span style={{ color: '#00d2ff' }}>Us</span></h1>
         <div style={{ lineHeight: '1.8', fontSize: '1.1rem', maxWidth: '800px' }}>
           <p>We love hearing from our players. Whether you spotted a bug, want to suggest a feature, have a question about a game, or want to talk about a partnership, the inboxes below all reach a human.</p>
 
-          <div style={{ marginTop: '40px', background: 'rgba(255,255,255,0.05)', padding: '30px', borderRadius: '15px' }}>
+          <div style={{ marginTop: '40px', background: 'var(--surface-2)', padding: '30px', borderRadius: '15px' }}>
             <h3 style={{ color: '#00d2ff' }}>Player Support &amp; Bug Reports</h3>
             <p>For account issues, leaderboard problems, gameplay bugs, or general questions:</p>
-            <p style={{ fontSize: '1.4rem' }}><a href="mailto:help@arcadedeck.net" style={{ color: '#fff', textDecoration: 'none' }}>help@arcadedeck.net</a></p>
+            <p style={{ fontSize: '1.4rem' }}><a href="mailto:help@arcadedeck.net" style={{ color: 'var(--text-primary)', textDecoration: 'none' }}>help@arcadedeck.net</a></p>
             <p style={{ fontSize: '0.95rem', opacity: 0.8 }}>When reporting a bug, please include: your Gamer ID, the game name, the device and browser you were using, and a brief description of what went wrong. Screenshots or short screen recordings help us reproduce the problem faster.</p>
 
             <h3 style={{ marginTop: '30px', color: '#00d2ff' }}>Business &amp; Game Submissions</h3>
             <p>If you're an indie developer interested in publishing your browser game on ArcadeDeck, or you'd like to discuss advertising or sponsorship opportunities:</p>
-            <p style={{ fontSize: '1.4rem' }}><a href="mailto:biz@arcadedeck.net" style={{ color: '#fff', textDecoration: 'none' }}>biz@arcadedeck.net</a></p>
+            <p style={{ fontSize: '1.4rem' }}><a href="mailto:biz@arcadedeck.net" style={{ color: 'var(--text-primary)', textDecoration: 'none' }}>biz@arcadedeck.net</a></p>
 
             <h3 style={{ marginTop: '30px', color: '#00d2ff' }}>Privacy &amp; Data Requests</h3>
             <p>For data access, deletion, or any privacy-related question covered by our <Link to="/privacy" style={{ color: '#00d2ff' }}>Privacy Policy</Link>, write to <a href="mailto:help@arcadedeck.net" style={{ color: '#00d2ff' }}>help@arcadedeck.net</a> with your Gamer ID and the affected game(s).</p>

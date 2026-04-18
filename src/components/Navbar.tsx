@@ -1,10 +1,21 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { User, Trophy, Gamepad2 } from 'lucide-react';
+import { User, Trophy, Gamepad2, Sun, Moon } from 'lucide-react';
 import './Navbar.css';
+
+type Theme = 'light' | 'dark';
+const THEME_KEY = 'arcadedeck-theme';
+
+const getInitialTheme = (): Theme => {
+  if (typeof document === 'undefined') return 'dark';
+  const current = document.documentElement.getAttribute('data-theme');
+  if (current === 'dark' || current === 'light') return current;
+  return 'dark';
+};
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const location = useLocation();
 
   // Auto-close menu on route change
@@ -20,8 +31,15 @@ const Navbar: React.FC = () => {
     return () => document.removeEventListener('keydown', handleEscape);
   }, [isMenuOpen]);
 
+  // Apply theme to <html> and persist
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    try { localStorage.setItem(THEME_KEY, theme); } catch { /* ignore */ }
+  }, [theme]);
+
   const toggleMenu = useCallback(() => setIsMenuOpen(prev => !prev), []);
   const closeMenu  = useCallback(() => setIsMenuOpen(false), []);
+  const toggleTheme = useCallback(() => setTheme(prev => (prev === 'dark' ? 'light' : 'dark')), []);
 
   const isActive = (path: string) =>
     path === '/' ? location.pathname === '/' : location.pathname === path || location.pathname.startsWith(path + '/');
@@ -34,17 +52,31 @@ const Navbar: React.FC = () => {
           Arcade<span data-text="Deck">Deck</span>
         </Link>
 
-        {/* Hamburger Menu Toggle */}
-        <button
-          className={`menu-toggle ${isMenuOpen ? 'open' : ''}`}
-          onClick={toggleMenu}
-          aria-label="Toggle navigation menu"
-          aria-expanded={isMenuOpen}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        {/* Right cluster: theme toggle + hamburger */}
+        <div className="navbar-actions">
+          <button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            title={theme === 'dark' ? 'Light mode' : 'Dark mode'}
+            type="button"
+          >
+            {theme === 'dark'
+              ? <Sun size={16} aria-hidden="true" />
+              : <Moon size={16} aria-hidden="true" />}
+          </button>
+
+          <button
+            className={`menu-toggle ${isMenuOpen ? 'open' : ''}`}
+            onClick={toggleMenu}
+            aria-label="Toggle navigation menu"
+            aria-expanded={isMenuOpen}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
 
         <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
           <li><Link to="/"           className={isActive('/')           ? 'nav-active' : ''} onClick={closeMenu}>Games</Link></li>

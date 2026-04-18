@@ -1,16 +1,16 @@
 .comment-section {
   margin-top: 50px;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--surface-1);
   padding: 40px;
   border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
   width: 100%;
 }
 
 .comment-section h3 {
   font-size: 1.8rem;
   margin-bottom: 30px;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .comment-section h3 span {
@@ -41,11 +41,11 @@
 .comment-form textarea {
   width: 100%;
   min-height: 100px;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
   border-radius: 10px;
   padding: 15px;
-  color: #fff;
+  color: var(--text-primary);
   font-family: inherit;
   resize: vertical;
   margin-bottom: 15px;
@@ -101,7 +101,7 @@
 }
 
 .comment-item {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--surface-1);
   padding: 20px;
   border-radius: 10px;
   border-left: 4px solid #00d2ff;
@@ -115,7 +115,7 @@
 
 .comment-author {
   font-weight: 700;
-  color: #fff;
+  color: var(--text-primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -166,8 +166,8 @@
 }
 
 .load-more-btn:disabled {
-  color: #555;
-  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  border-color: var(--border-subtle);
   cursor: not-allowed;
 }
 

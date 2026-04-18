@@ -5,7 +5,7 @@
   transform: translateX(-50%);
   width: 90%;
   max-width: 500px;
-  background: rgba(13, 14, 20, 0.95);
+  background: var(--scrim-strong);
   backdrop-filter: blur(15px);
   border: 1px solid rgba(0, 210, 255, 0.3);
   border-radius: 20px;
@@ -40,7 +40,7 @@
 .pwa-text h3 {
   margin: 0;
   font-size: 1.1rem;
-  color: #fff;
+  color: var(--text-primary);
   font-weight: 800;
   letter-spacing: -0.5px;
 }
@@ -48,7 +48,7 @@
 .pwa-text p {
   margin: 2px 0 0 0;
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--text-secondary);
 }
 
 .pwa-actions {
@@ -78,7 +78,7 @@
 .close-btn {
   background: none;
   border: none;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-muted);
   font-size: 1.2rem;
   cursor: pointer;
   padding: 5px;
@@ -86,7 +86,7 @@
 }
 
 .close-btn:hover {
-  color: #fff;
+  color: var(--text-primary);
 }
 
 /* Mobile adjustments */
