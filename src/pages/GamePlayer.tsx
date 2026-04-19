@@ -91,6 +91,7 @@ const GamePlayer: React.FC = () => {
 
   const fetchLeaderboard = async () => {
     if (!id) return [];
+    if (!games.find(g => g.id === id)?.leaderboard) return [];
     try {
       const dualSort = games.find(g => g.id === id)?.leaderboard?.dualSort ?? false;
       const q = dualSort
@@ -140,6 +141,7 @@ const GamePlayer: React.FC = () => {
 
   const handleGameComplete = async (score: number, subScore?: number) => {
     if (!id) return;
+    if (!games.find(g => g.id === id)?.leaderboard) return;
 
     // Resolve leaderboard display config from games data (no hardcoded IDs)
     const lb = games.find(g => g.id === id)?.leaderboard;
@@ -543,7 +545,7 @@ const GamePlayer: React.FC = () => {
           )}
         </div>
 
-        <Leaderboard entries={leaderboard} gameId={game.id} currentNickname={nickname} />
+        {game.leaderboard && <Leaderboard entries={leaderboard} gameId={game.id} currentNickname={nickname} />}
         <CommentSection gameId={game.id} currentNickname={nickname} />
 
         {/* ── Related Games ── */}
@@ -582,7 +584,7 @@ const GamePlayer: React.FC = () => {
         </div>
       )}
 
-      {showLeaderboard && (
+      {game.leaderboard && showLeaderboard && (
         <div className="leaderboard-modal-overlay" onClick={() => setShowLeaderboard(false)}>
           <div className="leaderboard-modal-content" onClick={e => e.stopPropagation()}>
             <button className="close-modal-btn" onClick={() => setShowLeaderboard(false)} aria-label="Close leaderboard"><X size={18} aria-hidden="true" /></button>

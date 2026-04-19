@@ -347,16 +347,7 @@
     "gameUrl": "https://omok-96n.pages.dev/",
     "aspectRatio": "1/1",
     "status": "PLAYABLE",
-    "isOriginal": true,
-    "leaderboard": {
-      "title": "Omok Grandmaster Leaderboard",
-      "primaryLabel": "Win Rate",
-      "primaryUnit": "%",
-      "secondaryLabel": "Total Wins",
-      "secondaryUnit": "",
-      "dualSort": true,
-      "subSortAsc": false
-    }
+    "isOriginal": true
   },
   {
     "id": "9",
@@ -825,6 +816,50 @@
     "isOriginal": true
   },
   {
+    "id": "19",
+    "slug": "spirit-duel",
+    "language": "KO/EN",
+    "title": "Spirit Duel",
+    "titleKo": "스피릿 듀얼",
+    "description": "A tactical 1v1 card-spirit battle game — challenge a friend locally or test your wits against the AI!",
+    "descriptionKo": "전략적인 1대1 스피릿 카드 배틀 게임 — 친구와 로컬 대전을 즐기거나 AI에 도전하세요!",
+    "fullDescription": "\n      Spirit Duel is a deep tactical battle game where players summon powerful spirits and outmaneuver their opponent through careful resource management and strategic decision-making.\n      Choose from a roster of unique spirits, each with distinct abilities. Build your strategy, read your opponent, and strike at the perfect moment. Every duel is a fresh test of skill and adaptability.\n      Play locally against a friend in intense 1v1 matches, or sharpen your tactics against the AI. The spirits await — who will emerge victorious?\n    ",
+    "fullDescriptionKo": "\n      스피릿 듀얼은 플레이어가 강력한 스피릿을 소환하고 신중한 자원 관리와 전략적 판단으로 상대를 압도하는 깊이 있는 전술 배틀 게임입니다.\n      고유한 능력을 가진 다양한 스피릿 중에서 선택하세요. 전략을 세우고, 상대를 읽고, 완벽한 순간에 공격하세요. 모든 듀얼은 실력과 적응력의 새로운 시험입니다.\n      친구와 로컬 1대1 매치로 치열하게 대결하거나, AI를 상대로 전술을 갈고닦으세요. 스피릿들이 기다리고 있습니다 — 과연 누가 승리를 거머쥘까요?\n    ",
+    "controls": "Mouse/Touch: Select spirits and actions / UI Buttons: Confirm moves and end turn",
+    "controlsKo": "마우스/터치: 스피릿 및 행동 선택 / UI 버튼: 행동 확인 및 턴 종료",
+    "tips": "Learn each spirit's strengths and weaknesses before committing to a strategy. Resource tempo is everything — don't overextend early. Watch your opponent's patterns when facing the AI to find exploitable openings.",
+    "tipsKo": "전략을 확정하기 전에 각 스피릿의 강점과 약점을 파악하세요. 자원 운용 흐름이 핵심입니다 — 초반에 너무 무리하지 마세요. AI를 상대할 때는 상대의 패턴을 관찰해 허점을 찾으세요.",
+    "lore": "\n      Ancient spirits have long walked the boundary between worlds, each one a force of nature given form. In the sacred dueling grounds, two spirit binders face off, their wills clashing through the spirits they command.\n      Only through mastery of both spirit and strategy can a true binder claim supremacy. The duel is not just a battle — it is a conversation between souls.\n    ",
+    "loreKo": "\n      고대의 스피릿들은 오래전부터 세계의 경계를 걸어왔으며, 각각은 형태를 부여받은 자연의 힘입니다. 신성한 듀얼 경기장에서 두 스피릿 바인더가 맞서며, 그들이 다루는 스피릿을 통해 의지가 충돌합니다.\n      스피릿과 전략 모두를 완전히 익혀야만 진정한 바인더가 패권을 차지할 수 있습니다. 듀얼은 단순한 싸움이 아닙니다 — 그것은 영혼 사이의 대화입니다.\n    ",
+    "features": [
+      "Local 1v1 PvP Mode",
+      "Single Player vs AI",
+      "Unique Spirit Roster with Distinct Abilities",
+      "Deep Tactical Decision-Making",
+      "Fast Rounds & High Replayability",
+      "Web & Mobile Friendly"
+    ],
+    "featuresKo": [
+      "로컬 1대1 PvP 모드",
+      "싱글 플레이어 AI 대전",
+      "고유한 능력을 가진 다양한 스피릿",
+      "깊이 있는 전술적 의사결정",
+      "빠른 라운드 & 높은 리플레이성",
+      "웹 & 모바일 지원"
+    ],
+    "thumbnail": "images/spirit_duel.webp",
+    "genres": [
+      "Tactical Battle",
+      "PvP",
+      "Strategy",
+      "Local Co-op"
+    ],
+    "gameUrl": "https://spirit-duel-bk.pages.dev/",
+    "aspectRatio": "16/9",
+    "status": "PLAYABLE",
+    "isOriginal": true
+  },
+  {
     "id": "18",
     "slug": "skyfall",
     "language": "KO/EN",
@@ -861,6 +896,15 @@
     "gameUrl": "https://skyfall-bk.pages.dev/",
     "aspectRatio": "16/9",
     "status": "PLAYABLE",
-    "isOriginal": true
+    "isOriginal": true,
+    "leaderboard": {
+      "title": "Skyfall Survival Leaderboard",
+      "primaryLabel": "Survival Time",
+      "primaryUnit": "s",
+      "secondaryLabel": "",
+      "secondaryUnit": "",
+      "dualSort": false,
+      "subSortAsc": false
+    }
   }
 ]
