@@ -906,5 +906,42 @@
       "dualSort": false,
       "subSortAsc": false
     }
+  },
+  {
+    "id": "20",
+    "slug": "polygon-invasion-td",
+    "language": "EN",
+    "title": "Polygon Invasion TD",
+    "description": "A fast-paced tower defense game where you defend against waves of geometric invaders.",
+    "fullDescription": "\n      Polygon Invasion TD throws you into a vibrant geometric battlefield where waves of polygonal enemies advance relentlessly toward your core. Place towers strategically, upgrade them mid-battle, and adapt your defenses to survive ever-tougher waves.\n      Each polygon type brings its own threat — fast triangles, armored hexagons, and swarming squares all demand different counter-strategies. Resource management and tower placement are the keys to climbing further into the invasion.\n      How deep can you push? Reach the peak wave, rack up enemy kills, and claim your spot on the global leaderboard.\n    ",
+    "controls": "Mouse Click / Touch: Place towers, upgrade, and select targets",
+    "tips": "Cover chokepoints early. Mix tower types — single-target for tanks, splash for swarms. Save resources for emergency upgrades during boss waves.",
+    "lore": "\n      The Polygon Dimension has breached our reality, and its geometric inhabitants march in endless formation. Only your towers stand between order and the encroaching chaos of shapes.\n      Build, upgrade, and hold the line. Every wave repelled is a fragment of reality reclaimed.\n    ",
+    "features": [
+      "Strategic Tower Placement",
+      "Multiple Tower Types and Upgrades",
+      "Endless Waves of Geometric Enemies",
+      "Peak Wave & Kill Count Leaderboard",
+      "Fast-paced Tactical Gameplay",
+      "Web & Mobile Friendly"
+    ],
+    "thumbnail": "images/ploygon_invasion_TD.webp",
+    "genres": [
+      "Tower Defense",
+      "Strategy"
+    ],
+    "gameUrl": "https://polygon-invasion-td-bk.pages.dev/",
+    "aspectRatio": "16/9",
+    "status": "PLAYABLE",
+    "isOriginal": true,
+    "leaderboard": {
+      "title": "Polygon Invasion Leaderboard",
+      "primaryLabel": "Peak Wave",
+      "primaryUnit": "",
+      "secondaryLabel": "Kills",
+      "secondaryUnit": "",
+      "dualSort": true,
+      "subSortAsc": false
+    }
   }
 ]
