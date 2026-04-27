@@ -205,6 +205,7 @@ const Home: React.FC = () => {
                     onChange={(e) => setTempName(e.target.value)}
                     maxLength={12}
                     placeholder="Enter nickname..."
+                    aria-label="Game nickname"
                     autoFocus
                   />
                 </div>
@@ -254,9 +255,10 @@ const Home: React.FC = () => {
               <div className="inline-search-wrapper">
                 <Search size={15} className="inline-search-icon" aria-hidden="true" />
                 <input
-                  type="text"
+                  type="search"
                   className="inline-search-input"
                   placeholder="Search..."
+                  aria-label="Search games"
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
                 />

@@ -157,6 +157,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ gameId, currentNickname
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             placeholder="Share your thoughts about this game..."
+            aria-label="Comment text"
             maxLength={COMMENT_MAX}
           />
           <span className={`char-count ${charAtLimit ? 'at-limit' : charNearLimit ? 'near-limit' : ''}`}>
