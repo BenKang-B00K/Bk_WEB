@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { User, Trophy, Gamepad2, Sun, Moon } from 'lucide-react';
+import { User, Trophy, Gamepad2, Sun, Moon, Heart } from 'lucide-react';
 import './Navbar.css';
 
 type Theme = 'light' | 'dark';
@@ -82,6 +82,7 @@ const Navbar: React.FC = () => {
           <li><Link to="/"           className={isActive('/')           ? 'nav-active' : ''} onClick={closeMenu}>Games</Link></li>
           <li><Link to="/my-games"   className={isActive('/my-games')   ? 'nav-active' : ''} onClick={closeMenu}><User size={16} aria-hidden="true" /> My Rank</Link></li>
           <li><Link to="/hall-of-fame" className={isActive('/hall-of-fame') ? 'nav-active' : ''} onClick={closeMenu}><Trophy size={16} aria-hidden="true" /> Hall of Fame</Link></li>
+          <li><a href="https://ko-fi.com/developer_benjamink" target="_blank" rel="noopener noreferrer" className="nav-support" onClick={closeMenu}><Heart size={16} aria-hidden="true" /> Support</a></li>
         </ul>
       </div>
       {/* Overlay for mobile menu */}

@@ -365,6 +365,7 @@ const Home: React.FC = () => {
             <Link to="/about" className="footer-link">About Us</Link>
             <Link to="/privacy" className="footer-link">Privacy Policy</Link>
             <Link to="/contact" className="footer-link">Contact</Link>
+            <a href="https://ko-fi.com/developer_benjamink" target="_blank" rel="noopener noreferrer" className="footer-link footer-link-support">Support ♥</a>
           </div>
         </div>
       </footer>

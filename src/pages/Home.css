@@ -517,6 +517,14 @@
   color: var(--text-primary);
 }
 
+.footer-link-support {
+  color: #ff2e63;
+}
+
+.footer-link-support:hover {
+  color: #ff5e8a;
+}
+
 /* ── Responsive ── */
 @media (max-width: 992px) {
   .hero h1 { font-size: var(--text-4xl); }

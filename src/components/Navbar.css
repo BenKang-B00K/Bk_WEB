@@ -109,6 +109,14 @@
   color: var(--text-primary);
 }
 
+.nav-links li a.nav-support {
+  color: #ff2e63;
+}
+
+.nav-links li a.nav-support:hover {
+  color: #ff5e8a;
+}
+
 .nav-links li a.nav-active::after {
   content: '';
   position: absolute;
@@ -229,6 +237,7 @@
   .nav-links.open li:nth-child(1) { transition-delay: 0.08s; }
   .nav-links.open li:nth-child(2) { transition-delay: 0.14s; }
   .nav-links.open li:nth-child(3) { transition-delay: 0.2s; }
+  .nav-links.open li:nth-child(4) { transition-delay: 0.26s; }
 
   .nav-links li a {
     font-size: var(--text-base);

@@ -40,6 +40,28 @@ const About: React.FC = () => {
           <h2 style={{ marginTop: '3rem', color: '#00d2ff' }}>Community</h2>
           <p>We value our players' voices. Every game page has a comment section where you can share strategies, give feedback, or just say hello. Our leaderboards create a competitive yet friendly community where players push each other to improve.</p>
 
+          <h2 style={{ marginTop: '3rem', color: '#00d2ff' }}>Support ArcadeDeck</h2>
+          <p>ArcadeDeck is independently developed and runs without paywalls or required sign-ups. If you enjoy the games and want to help keep the servers running, fund new game development, or just buy the team a coffee, you can support us on Ko-fi.</p>
+          <p style={{ marginTop: '1.5rem' }}>
+            <a
+              href="https://ko-fi.com/developer_benjamink"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-block',
+                padding: '0.75rem 1.5rem',
+                background: 'linear-gradient(135deg, #ff5e5b 0%, #ff2e63 100%)',
+                color: '#fff',
+                borderRadius: '999px',
+                fontWeight: 600,
+                textDecoration: 'none',
+                boxShadow: '0 4px 16px rgba(255, 46, 99, 0.35)',
+              }}
+            >
+              ♥ Support on Ko-fi
+            </a>
+          </p>
+
           <h2 style={{ marginTop: '3rem', color: '#00d2ff' }}>Contact Us</h2>
           <p>Have a question, suggestion, or business inquiry? We'd love to hear from you. Visit our <Link to="/contact" style={{ color: '#00d2ff' }}>Contact page</Link> to get in touch with the team.</p>
         </div>
@@ -51,6 +73,7 @@ const About: React.FC = () => {
             <Link to="/about" className="footer-link">About Us</Link>
             <Link to="/privacy" className="footer-link">Privacy Policy</Link>
             <Link to="/contact" className="footer-link">Contact</Link>
+            <a href="https://ko-fi.com/developer_benjamink" target="_blank" rel="noopener noreferrer" className="footer-link footer-link-support">Support ♥</a>
           </div>
         </div>
       </footer>
