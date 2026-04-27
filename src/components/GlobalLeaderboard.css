@@ -405,7 +405,7 @@
 }
 
 .ranking-bar-player.rank-1 .ranking-bar-pts {
-  color: rgba(245, 197, 66, 0.6);
+  color: var(--rank-gold);
   font-size: var(--text-sm);
   font-weight: 600;
 }
@@ -429,7 +429,7 @@
 }
 
 .ranking-bar-player.rank-2 .ranking-bar-pts {
-  color: rgba(176, 184, 200, 0.5);
+  color: var(--rank-silver);
   font-size: var(--text-xs);
 }
 
@@ -440,19 +440,19 @@
 }
 
 .ranking-bar-player.rank-3 .ranking-bar-pos {
-  color: var(--rank-bronze);
+  color: #e8a868;
   font-size: var(--text-sm);
   font-weight: 700;
 }
 
 .ranking-bar-player.rank-3 .ranking-bar-name {
-  color: var(--rank-bronze);
+  color: #e8a868;
   font-size: var(--text-sm);
   font-weight: 600;
 }
 
 .ranking-bar-player.rank-3 .ranking-bar-pts {
-  color: rgba(205, 127, 50, 0.5);
+  color: #e8a868;
   font-size: var(--text-xs);
 }
 

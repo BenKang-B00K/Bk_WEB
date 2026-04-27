@@ -20,7 +20,7 @@
   /* ── Text (light-on-dark) ── */
   --text-primary: #eaeaf0;
   --text-secondary: #b6b3c8;
-  --text-muted: #7d7a93;
+  --text-muted: #9c98b8;
 
   /* ── Borders (alpha white over dark) ── */
   --border-subtle: rgba(255, 255, 255, 0.06);
@@ -139,7 +139,7 @@
 
   --text-primary: #1a1430;
   --text-secondary: #5a5378;
-  --text-muted: #8b85a8;
+  --text-muted: #6c668c;
 
   --border-subtle: rgba(26, 20, 48, 0.06);
   --border-default: rgba(26, 20, 48, 0.12);

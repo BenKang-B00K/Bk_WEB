@@ -363,14 +363,12 @@
 
 .genre-count {
   font-size: 0.65rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-weight: 500;
-  opacity: 0.7;
 }
 
 .genre-btn.active .genre-count {
   color: var(--primary-color);
-  opacity: 0.8;
 }
 
 .active-dot {
