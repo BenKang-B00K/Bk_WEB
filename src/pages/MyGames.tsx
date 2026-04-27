@@ -99,7 +99,7 @@ const MyGames = () => {
         <meta name="robots" content="noindex, follow" />
       </Helmet>
       <Navbar />
-      <div className="container">
+      <main className="container">
         <header className="my-games-header">
           <h1>My <span>Ranking</span></h1>
           <p className="subtitle">Track your performance across all universes</p>
@@ -160,7 +160,7 @@ const MyGames = () => {
             </section>
           </div>
         )}
-      </div>
+      </main>
     </div>
   );
 };

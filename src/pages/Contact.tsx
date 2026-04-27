@@ -14,7 +14,7 @@ const Contact: React.FC = () => {
         <meta property="og:url" content="https://arcadedeck.net/contact" />
       </Helmet>
       <Navbar />
-      <div className="container" style={{ paddingTop: '120px', flex: 1, color: 'var(--text-primary)' }}>
+      <main className="container" style={{ paddingTop: '120px', flex: 1, color: 'var(--text-primary)' }}>
         <h1 style={{ fontSize: '3rem', marginBottom: '2rem' }}>Contact <span style={{ color: '#00d2ff' }}>Us</span></h1>
         <div style={{ lineHeight: '1.8', fontSize: '1.1rem', maxWidth: '800px' }}>
           <p>We love hearing from our players. Whether you spotted a bug, want to suggest a feature, have a question about a game, or want to talk about a partnership, the inboxes below all reach a human.</p>
@@ -42,7 +42,7 @@ const Contact: React.FC = () => {
           <p><strong>How do I change my Gamer ID?</strong> Click the edit icon next to your name on the homepage. Past leaderboard entries keep the name they were submitted under.</p>
           <p><strong>Can I submit my own game?</strong> Yes — see the Business &amp; Game Submissions email above. Include a playable build link, a short description, and your contact info.</p>
         </div>
-      </div>
+      </main>
       <footer className="footer">
         <div className="container footer-container">
           <p>&copy; 2026 ArcadeDeck. All rights reserved.</p>

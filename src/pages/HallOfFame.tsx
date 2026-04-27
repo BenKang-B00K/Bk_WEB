@@ -40,7 +40,7 @@ const HallOfFame: React.FC = () => {
         <meta property="og:url" content="https://arcadedeck.net/hall-of-fame" />
       </Helmet>
       <Navbar />
-      <div className="container hof-container">
+      <main className="container hof-container">
         <header className="hof-header">
           <h1><Landmark size={28} aria-hidden="true" /> Hall of Fame Archive</h1>
           <p>The Eternal Records of ArcadeDeck Legends</p>
@@ -76,7 +76,7 @@ const HallOfFame: React.FC = () => {
             </div>
           )}
         </section>
-      </div>
+      </main>
     </div>
   );
 };

@@ -420,7 +420,7 @@ const GamePlayer: React.FC = () => {
       )}
 
       <Navbar />
-      <div className="container player-container">
+      <main className="container player-container">
         {/* ── Compact top bar: back + player + lang ── */}
         <div className="player-header-flex">
           <Link to="/" className="back-button-modern">
@@ -567,7 +567,7 @@ const GamePlayer: React.FC = () => {
             </div>
           );
         })()}
-      </div>
+      </main>
 
       {/* ── Sticky Controls Bar ── */}
       {showStickyBar && !isPseudoFullscreen && (

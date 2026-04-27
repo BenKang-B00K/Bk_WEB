@@ -15,7 +15,7 @@ const About: React.FC = () => {
         <meta property="og:url" content="https://arcadedeck.net/about" />
       </Helmet>
       <Navbar />
-      <div className="container" style={{ paddingTop: '120px', flex: 1, color: '#fff' }}>
+      <main className="container" style={{ paddingTop: '120px', flex: 1, color: '#fff' }}>
         <h1 style={{ fontSize: '3rem', marginBottom: '2rem' }}>About <span style={{ color: '#00d2ff' }}>ArcadeDeck</span></h1>
         <div style={{ lineHeight: '1.8', fontSize: '1.1rem', maxWidth: '800px' }}>
           <p>Welcome to ArcadeDeck, your ultimate destination for high-quality web-based gaming experiences. We are a small team of independent game developers and web engineers passionate about creating fun, accessible games that anyone can enjoy instantly in their browser.</p>
@@ -43,7 +43,7 @@ const About: React.FC = () => {
           <h2 style={{ marginTop: '3rem', color: '#00d2ff' }}>Contact Us</h2>
           <p>Have a question, suggestion, or business inquiry? We'd love to hear from you. Visit our <Link to="/contact" style={{ color: '#00d2ff' }}>Contact page</Link> to get in touch with the team.</p>
         </div>
-      </div>
+      </main>
       <footer className="footer">
         <div className="container footer-container">
           <p>&copy; 2026 ArcadeDeck. All rights reserved.</p>

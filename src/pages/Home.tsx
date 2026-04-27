@@ -189,6 +189,7 @@ const Home: React.FC = () => {
 
       <Navbar />
 
+      <main>
       {/* ── Hero: welcome + Gamer ID ── */}
       <header className="hero">
         <div className="container hero-content">
@@ -352,6 +353,7 @@ const Home: React.FC = () => {
           <AdBanner slot={AD_SLOTS.HOME_BOTTOM} style={{ margin: '0' }} />
         </div>
       </section>
+      </main>
 
       <footer className="footer">
         <div className="container footer-container">
