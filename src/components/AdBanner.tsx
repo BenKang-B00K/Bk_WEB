@@ -7,6 +7,10 @@ declare global {
 }
 
 const AD_CLIENT_ID = "ca-pub-2461804849200179";
+// Set to true once AdSense site approval moves from "Getting ready" to "Ready".
+// While false, we render the placeholder only — no script load, no adsbygoogle.push,
+// which avoids 400 Bad Request console noise during review.
+const ADSENSE_APPROVED = false;
 
 interface AdBannerProps {
   slot?: string;
@@ -19,10 +23,9 @@ const AdBanner: React.FC<AdBannerProps> = ({ slot, style, format = 'auto', place
   const adPushed = useRef(false);
 
   useEffect(() => {
-    // Only proceed if a slot is provided
     if (!slot) return;
+    if (!ADSENSE_APPROVED) return;
 
-    // Load AdSense script dynamically if not already present
     if (!document.querySelector('script[src*="adsbygoogle.js"]')) {
       const script = document.createElement('script');
       script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${AD_CLIENT_ID}`;
@@ -31,7 +34,6 @@ const AdBanner: React.FC<AdBannerProps> = ({ slot, style, format = 'auto', place
       document.head.appendChild(script);
     }
 
-    // Push the ad
     if (!adPushed.current) {
       try {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -76,7 +78,7 @@ const AdBanner: React.FC<AdBannerProps> = ({ slot, style, format = 'auto', place
       marginRight,
       minHeight: '120px'
     }}>
-      {slot ? (
+      {slot && ADSENSE_APPROVED ? (
         <ins className="adsbygoogle"
              style={{ 
                display: 'block', 
