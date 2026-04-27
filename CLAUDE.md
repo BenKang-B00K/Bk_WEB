@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Stack
 
-React 19 + TypeScript + Vite 7. Firebase Firestore for leaderboards/comments. Deployed via Firebase Hosting (custom domain `arcadedeck.net`, CNAME in repo root). PWA via `vite-plugin-pwa`.
+React 19 + TypeScript + Vite 7. Firebase Firestore for leaderboards/comments. Deployed via Firebase Hosting (`firebase deploy --only hosting`, custom domain `arcadedeck.net`). PWA via `vite-plugin-pwa`. Security headers (CSP, HSTS, COOP, XFO) in `firebase.json`.
 
 ## Commands
 
