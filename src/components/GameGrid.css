@@ -110,6 +110,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 30px;
+  /* Skip rendering work for cards below the viewport until they scroll close.
+     Cuts initial style/layout cost without affecting LCP or CLS. */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
 }
 
 .all-games-grid {

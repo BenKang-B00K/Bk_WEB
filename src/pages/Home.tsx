@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import { Search, X, Edit3 } from 'lucide-react';
 import Navbar from '../components/Navbar';
-import GameGrid from '../components/GameGrid';
 import GameCard from '../components/GameCard';
 import AdBanner from '../components/AdBanner';
 import { games } from '../data/games';
@@ -12,6 +11,7 @@ import { BANNED_WORDS, RANDOM_ID_MIN, RANDOM_ID_MAX, AD_SLOTS, LEADERBOARD_FETCH
 import './Home.css';
 
 const GlobalLeaderboard = lazy(() => import('../components/GlobalLeaderboard'));
+const GameGrid = lazy(() => import('../components/GameGrid'));
 
 const Home: React.FC = () => {
   const [nickname, setNickname] = React.useState<string>(() => {
@@ -334,17 +334,19 @@ const Home: React.FC = () => {
 
         {/* ── Main Game Grid ── */}
         <div className="container grid-content-wrapper">
-          <GameGrid
-            selectedGenre={selectedGenre}
-            searchQuery={searchQuery}
-            userRanks={userRanks}
-            onProductionClick={() => showNotification('This game is coming soon!', 'info')}
-            onGenreClick={(genre) => {
-              setSelectedGenre(genre);
-              sessionStorage.setItem('selected_genre', genre);
-              document.getElementById('games-grid')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          />
+          <Suspense fallback={<div style={{ minHeight: 800 }} aria-hidden="true" />}>
+            <GameGrid
+              selectedGenre={selectedGenre}
+              searchQuery={searchQuery}
+              userRanks={userRanks}
+              onProductionClick={() => showNotification('This game is coming soon!', 'info')}
+              onGenreClick={(genre) => {
+                setSelectedGenre(genre);
+                sessionStorage.setItem('selected_genre', genre);
+                document.getElementById('games-grid')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            />
+          </Suspense>
         </div>
       </div>
 
