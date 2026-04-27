@@ -75,7 +75,7 @@ for (const game of playableGames) {
     <meta name="keywords" content="${game.title}, ${game.genres.join(', ')}, free online game, browser game, arcadedeck" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#050507" />
-    <link rel="icon" type="image/webp" href="/images/Favicon.webp" />
+    <link rel="icon" type="image/webp" href="/images/favicon.webp" />
     <link rel="apple-touch-icon" href="/images/icon-192x192.webp" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />

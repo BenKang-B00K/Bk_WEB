@@ -1,3 +1,14 @@
+/* Fredoka fallback — metrics tuned to Fredoka so layout shift on swap is ~0.
+   Values from @capsizecss/metrics for Fredoka 400 over Arial. */
+@font-face {
+  font-family: 'Fredoka Fallback';
+  src: local('Arial');
+  ascent-override: 93.42%;
+  descent-override: 23.36%;
+  line-gap-override: 0%;
+  size-adjust: 99.13%;
+}
+
 :root,
 [data-theme="dark"] {
   /* ── Base Surfaces (dark — default theme) ── */
@@ -66,8 +77,8 @@
   --brand-gradient: linear-gradient(135deg, #f5c542 0%, #ff8c00 40%, #e040fb 70%, #00e5ff 100%);
 
   /* ── Typography ── */
-  --font-display: 'Fredoka', system-ui, sans-serif;
-  --font-body: 'Fredoka', system-ui, sans-serif;
+  --font-display: 'Fredoka', 'Fredoka Fallback', system-ui, sans-serif;
+  --font-body: 'Fredoka', 'Fredoka Fallback', system-ui, sans-serif;
   --font-family: var(--font-body);
 
   /* Type Scale */

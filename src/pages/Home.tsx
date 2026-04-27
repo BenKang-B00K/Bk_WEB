@@ -26,15 +26,16 @@ const Home: React.FC = () => {
   const [tempName, setTempName] = React.useState(nickname);
   const [selectedGenre, setSelectedGenre] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState('');
-  const [recentlyPlayedIds, setRecentlyPlayedIds] = useState<string[]>([]);
+  const [recentlyPlayedIds] = useState<string[]>(() => {
+    try {
+      const saved = localStorage.getItem('recently_played');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
   const [notification, setNotification] = useState<{ message: string; type: 'success' | 'info' | 'error' } | null>(null);
   const [userRanks, setUserRanks] = useState<Record<string, number>>({});
-
-  React.useEffect(() => {
-    const saved = localStorage.getItem('recently_played');
-    const recentlyPlayed = saved ? JSON.parse(saved) : [];
-    setRecentlyPlayedIds(recentlyPlayed);
-  }, []);
 
   // Fetch user's rank for each game they've played
   React.useEffect(() => {
@@ -148,12 +149,12 @@ const Home: React.FC = () => {
         <meta property="og:type" content="website" />
         <meta property="og:title" content="ArcadeDeck | The Ultimate Free Browser Games Platform" />
         <meta property="og:description" content="Play the best free online browser games on ArcadeDeck. No downloads required. Join now and start playing!" />
-        <meta property="og:image" content="https://arcadedeck.net/images/ArcadeDeck%20Banner.webp" />
+        <meta property="og:image" content="https://arcadedeck.net/images/arcadedeck-banner.webp" />
         <meta property="og:url" content="https://arcadedeck.net/" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="ArcadeDeck | The Ultimate Free Browser Games Platform" />
         <meta name="twitter:description" content="Play the best free online browser games on ArcadeDeck. No downloads required. Join now and start playing!" />
-        <meta name="twitter:image" content="https://arcadedeck.net/images/ArcadeDeck%20Banner.webp" />
+        <meta name="twitter:image" content="https://arcadedeck.net/images/arcadedeck-banner.webp" />
 
         {/* JSON-LD Structured Data */}
         <script type="application/ld+json">
@@ -243,7 +244,7 @@ const Home: React.FC = () => {
 
       {/* ── Compact Global Ranking Bar ── */}
       <div className="container">
-        <Suspense fallback={<div style={{ minHeight: 64 }} />}>
+        <Suspense fallback={<div style={{ minHeight: 88, margin: '16px 0' }} />}>
           <GlobalLeaderboard variant="compact" />
         </Suspense>
       </div>

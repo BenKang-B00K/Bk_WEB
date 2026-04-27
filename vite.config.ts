@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'prompt',
-      includeAssets: ['favicon.ico', 'images/Favicon.webp', 'images/ArcadeDeck Banner.webp'],
+      includeAssets: ['favicon.ico', 'images/favicon.webp', 'images/arcadedeck-banner.webp'],
       manifest: {
         name: 'ArcadeDeck | The Ultimate Free Browser Games Platform',
         short_name: 'ArcadeDeck',

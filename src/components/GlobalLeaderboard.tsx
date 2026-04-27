@@ -148,9 +148,10 @@ const GlobalLeaderboard: React.FC<GlobalLeaderboardProps> = ({ onDataLoaded, var
     }
   }, [calculateGlobalRanking]);
 
-  if (loading) return variant === 'compact' ? null : <div className="global-loader">Loading Hall of Fame...</div>;
-  if (error) return variant === 'compact' ? null : <div className="global-loader" style={{ color: '#ff6b6b' }}>{error}</div>;
-  if (podiumPlayers.length === 0) return null;
+  const compactPlaceholder = <div className="global-ranking-bar" aria-hidden="true" style={{ pointerEvents: 'none' }} />;
+  if (loading) return variant === 'compact' ? compactPlaceholder : <div className="global-loader">Loading Hall of Fame...</div>;
+  if (error) return variant === 'compact' ? compactPlaceholder : <div className="global-loader" style={{ color: '#ff6b6b' }}>{error}</div>;
+  if (podiumPlayers.length === 0) return variant === 'compact' ? compactPlaceholder : null;
 
   // Sort back to 1st, 2nd, 3rd order for compact view
   const sortedPlayers = [...podiumPlayers].sort((a, b) => (a.originalRank ?? 0) - (b.originalRank ?? 0));

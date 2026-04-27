@@ -4,7 +4,7 @@
  * and re-encodes at lower quality. Run manually:
  *   node scripts/optimize-images.cjs
  *
- * Skips: favicons, app icons, og-image, ArcadeDeck Banner (used full-bleed).
+ * Skips: favicons, app icons, arcadedeck-banner (used full-bleed).
  * Skips files already <= TARGET_WIDTH and reasonably small.
  */
 const sharp = require('sharp');
@@ -13,17 +13,15 @@ const path = require('path');
 sharp.cache(false);
 
 const DIR = path.join(__dirname, '..', 'public', 'images');
-const TARGET_WIDTH = 800;
-const QUALITY = 72;
-const SIZE_THRESHOLD = 100 * 1024;
+const TARGET_WIDTH = 640;
+const QUALITY = 70;
+const SIZE_THRESHOLD = 50 * 1024;
 
 const SKIP = new Set([
-  'Favicon.webp',
+  'favicon.webp',
   'icon-192x192.webp',
   'icon-512x512.webp',
-  'og-image.webp',
-  'ArcadeDeck Banner.webp',
-  'ArcadeDeck Banner (2).webp',
+  'arcadedeck-banner.webp',
   'bg.webp',
 ]);
 

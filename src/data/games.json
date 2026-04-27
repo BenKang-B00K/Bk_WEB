@@ -33,7 +33,7 @@
       "생존 시간 글로벌 리더보드",
       "웹 & 모바일 친화적"
     ],
-    "thumbnail": "images/Gate of Hell Image.webp",
+    "thumbnail": "images/gate-of-hell.webp",
     "genres": [
       "Tower Defense",
       "Action",
@@ -88,7 +88,7 @@
       "우주 정거장 시각적 업그레이드",
       "웹 & 모바일 친화적"
     ],
-    "thumbnail": "images/GL_Image.webp",
+    "thumbnail": "images/galaxy-launch.webp",
     "genres": [
       "Clicker",
       "Idle",
@@ -140,7 +140,7 @@
       "플레이어 주도 경제 및 거래 시스템",
       "펫 시스템: 몬스터를 길들여 함께 전투"
     ],
-    "thumbnail": "images/IA RPG.webp",
+    "thumbnail": "images/idle-avatar-rpg.webp",
     "genres": [
       "Idle",
       "RPG",
@@ -185,7 +185,7 @@
       "글로벌 월간 토너먼트",
       "웹 & 모바일 친화적"
     ],
-    "thumbnail": "images/Gem Merge.webp",
+    "thumbnail": "images/gem-merge.webp",
     "genres": [
       "Puzzle",
       "Casual",
@@ -238,7 +238,7 @@
       "생산 최적화를 위한 커스터마이징 가능한 도시 배치",
       "가장 부유한 제국을 위한 리더보드"
     ],
-    "thumbnail": "images/Trade Tycoon Image.webp",
+    "thumbnail": "images/trade-tycoon.webp",
     "genres": [
       "Tycoon",
       "Simulation",
@@ -283,7 +283,7 @@
       "아드레날린이 솟구치는 마지막 단계 시각 효과",
       "웹 & 모바일 친화적"
     ],
-    "thumbnail": "images/15s Clicker.webp",
+    "thumbnail": "images/15s-click-challenge.webp",
     "genres": [
       "Clicker",
       "Casual",
@@ -337,7 +337,7 @@
       "승률 및 엘로(Elo) 평점을 위한 리더보드",
       "웹 & 모바일 친화적"
     ],
-    "thumbnail": "images/Omok.webp",
+    "thumbnail": "images/omok.webp",
     "genres": [
       "Board Game",
       "Local Co-op",
@@ -383,7 +383,7 @@
       "독점 보상이 있는 일일 챌린지",
       "웹 & 모바일 친화적"
     ],
-    "thumbnail": "images/40th Century Void Survivor.webp",
+    "thumbnail": "images/40th-century-void-survivor.webp",
     "genres": [
       "Survival",
       "Action",
@@ -437,7 +437,7 @@
       "심도 있는 전술 대형 및 명령 시스템",
       "지속적인 글로벌 전쟁 진행 상황 추적기"
     ],
-    "thumbnail": "images/endlesswar.webp",
+    "thumbnail": "images/endless-war.webp",
     "genres": [
       "Simulation",
       "Strategy",
@@ -490,7 +490,7 @@
       "보스 전투",
       "웹 & 모바일 친화적"
     ],
-    "thumbnail": "images/Dicefall Chronicles.webp",
+    "thumbnail": "images/dicefall-chronicles.webp",
     "genres": [
       "Roguelike",
       "RPG",
@@ -542,7 +542,7 @@
       "최다 영웅 수집 글로벌 리더보드",
       "웹 & 모바일 친화적"
     ],
-    "thumbnail": "images/Heroes of the Last Nexus.webp",
+    "thumbnail": "images/heroes-of-the-last-nexus.webp",
     "genres": [
       "RPG",
       "Strategy",
@@ -595,7 +595,7 @@
       "아름다운 픽셀 아트와 만족스러운 음향 효과",
       "웹 & 모바일 친화적"
     ],
-    "thumbnail": "images/timing_chef.webp",
+    "thumbnail": "images/timing-chef.webp",
     "genres": [
       "Casual",
       "Arcade",
@@ -648,7 +648,7 @@
       "모바일 및 웹 최적화",
       "Web & Mobile Friendly"
     ],
-    "thumbnail": "images/fruit_frenzy_banner.webp",
+    "thumbnail": "images/fruit-frenzy.webp",
     "genres": [
       "Arcade",
       "Casual",
@@ -706,7 +706,7 @@
       "글로벌 리더보드",
       "웹 & 모바일 지원"
     ],
-    "thumbnail": "images/KLS_banner.webp",
+    "thumbnail": "images/kingdoms-last-stand.webp",
     "genres": [
       "Auto Battler",
       "Roguelike",
@@ -760,7 +760,7 @@
       "빠른 라운드 & 높은 리플레이성",
       "웹 & 모바일 지원"
     ],
-    "thumbnail": "images/make_triangle.webp",
+    "thumbnail": "images/triangle-battle.webp",
     "genres": [
       "Arcade",
       "Local Co-op",
@@ -803,7 +803,7 @@
       "PC 최적화",
       "깔끔하고 미니멀한 디자인"
     ],
-    "thumbnail": "images/tank_battle.webp",
+    "thumbnail": "images/tank-battle-1v1.webp",
     "genres": [
       "Action",
       "PvP",
@@ -847,7 +847,7 @@
       "빠른 라운드 & 높은 리플레이성",
       "웹 & 모바일 지원"
     ],
-    "thumbnail": "images/spirit_duel.webp",
+    "thumbnail": "images/spirit-duel.webp",
     "genres": [
       "Tactical Battle",
       "PvP",
@@ -887,7 +887,7 @@
       "깔끔한 비주얼과 이펙트",
       "중독성 있는 고득점 게임플레이"
     ],
-    "thumbnail": "images/SkyFall_Banner.webp",
+    "thumbnail": "images/skyfall.webp",
     "genres": [
       "Survival",
       "Reflex",
@@ -925,7 +925,7 @@
       "Fast-paced Tactical Gameplay",
       "Web & Mobile Friendly"
     ],
-    "thumbnail": "images/ploygon_invasion_TD.webp",
+    "thumbnail": "images/polygon-invasion-td.webp",
     "genres": [
       "Tower Defense",
       "Strategy"

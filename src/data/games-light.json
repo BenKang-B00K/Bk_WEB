@@ -15,7 +15,7 @@
       "Global Leaderboard for Survival Times",
       "Web & Mobile Friendly"
     ],
-    "thumbnail": "images/Gate of Hell Image.webp",
+    "thumbnail": "images/gate-of-hell.webp",
     "genres": [
       "Tower Defense",
       "Action",
@@ -52,7 +52,7 @@
       "Visual Upgrades for your Space Station",
       "Web & Mobile Friendly"
     ],
-    "thumbnail": "images/GL_Image.webp",
+    "thumbnail": "images/galaxy-launch.webp",
     "genres": [
       "Clicker",
       "Idle",
@@ -87,7 +87,7 @@
       "Player-driven Economy and Trading",
       "Pet System: Tame Monsters to Fight Alongside You"
     ],
-    "thumbnail": "images/IA RPG.webp",
+    "thumbnail": "images/idle-avatar-rpg.webp",
     "genres": [
       "Idle",
       "RPG",
@@ -114,7 +114,7 @@
       "Global Monthly Tournaments",
       "Web & Mobile Friendly"
     ],
-    "thumbnail": "images/Gem Merge.webp",
+    "thumbnail": "images/gem-merge.webp",
     "genres": [
       "Puzzle",
       "Casual",
@@ -150,7 +150,7 @@
       "Customizable City Layouts for Optimized Production",
       "Leaderboard for the Wealthiest Empires"
     ],
-    "thumbnail": "images/Trade Tycoon Image.webp",
+    "thumbnail": "images/trade-tycoon.webp",
     "genres": [
       "Tycoon",
       "Simulation",
@@ -177,7 +177,7 @@
       "Adrenaline-pumping Final Phase Visuals",
       "Web & Mobile Friendly"
     ],
-    "thumbnail": "images/15s Clicker.webp",
+    "thumbnail": "images/15s-click-challenge.webp",
     "genres": [
       "Clicker",
       "Casual",
@@ -213,7 +213,7 @@
       "Leaderboard for Win Rates and Elo Rating",
       "Web & Mobile Friendly"
     ],
-    "thumbnail": "images/Omok.webp",
+    "thumbnail": "images/omok.webp",
     "genres": [
       "Board Game",
       "Local Co-op",
@@ -241,7 +241,7 @@
       "Daily Challenges with Exclusive Rewards",
       "Web & Mobile Friendly"
     ],
-    "thumbnail": "images/40th Century Void Survivor.webp",
+    "thumbnail": "images/40th-century-void-survivor.webp",
     "genres": [
       "Survival",
       "Action",
@@ -278,7 +278,7 @@
       "Deep Tactical Formations and Orders",
       "Persistent Global War Progress Tracker"
     ],
-    "thumbnail": "images/endlesswar.webp",
+    "thumbnail": "images/endless-war.webp",
     "genres": [
       "Simulation",
       "Strategy",
@@ -314,7 +314,7 @@
       "Boss Battles",
       "Web & Mobile Friendly"
     ],
-    "thumbnail": "images/Dicefall Chronicles.webp",
+    "thumbnail": "images/dicefall-chronicles.webp",
     "genres": [
       "Roguelike",
       "RPG",
@@ -349,7 +349,7 @@
       "Global Leaderboard for Most Heroes Collected",
       "Web & Mobile Friendly"
     ],
-    "thumbnail": "images/Heroes of the Last Nexus.webp",
+    "thumbnail": "images/heroes-of-the-last-nexus.webp",
     "genres": [
       "RPG",
       "Strategy",
@@ -385,7 +385,7 @@
       "Aesthetic Pixel Art and Satisfying Sound Effects",
       "Web & Mobile Friendly"
     ],
-    "thumbnail": "images/timing_chef.webp",
+    "thumbnail": "images/timing-chef.webp",
     "genres": [
       "Casual",
       "Arcade",
@@ -421,7 +421,7 @@
       "Optimized for Mobile & Web",
       "Web & Mobile Friendly"
     ],
-    "thumbnail": "images/fruit_frenzy_banner.webp",
+    "thumbnail": "images/fruit-frenzy.webp",
     "genres": [
       "Arcade",
       "Casual",
@@ -460,7 +460,7 @@
       "Global Leaderboard",
       "Web & Mobile Friendly"
     ],
-    "thumbnail": "images/KLS_banner.webp",
+    "thumbnail": "images/kingdoms-last-stand.webp",
     "genres": [
       "Auto Battler",
       "Roguelike",
@@ -497,7 +497,7 @@
       "Quick Rounds & High Replayability",
       "Web & Mobile Friendly"
     ],
-    "thumbnail": "images/make_triangle.webp",
+    "thumbnail": "images/triangle-battle.webp",
     "genres": [
       "Arcade",
       "Local Co-op",
@@ -524,7 +524,7 @@
       "PC Optimized",
       "Clean Minimalist Design"
     ],
-    "thumbnail": "images/tank_battle.webp",
+    "thumbnail": "images/tank-battle-1v1.webp",
     "genres": [
       "Action",
       "PvP",
@@ -551,7 +551,7 @@
       "Fast Rounds & High Replayability",
       "Web & Mobile Friendly"
     ],
-    "thumbnail": "images/spirit_duel.webp",
+    "thumbnail": "images/spirit-duel.webp",
     "genres": [
       "Tactical Battle",
       "PvP",
@@ -577,7 +577,7 @@
       "Clean Visuals and Effects",
       "Addictive High-Score Gameplay"
     ],
-    "thumbnail": "images/SkyFall_Banner.webp",
+    "thumbnail": "images/skyfall.webp",
     "genres": [
       "Survival",
       "Reflex",
@@ -611,7 +611,7 @@
       "Fast-paced Tactical Gameplay",
       "Web & Mobile Friendly"
     ],
-    "thumbnail": "images/ploygon_invasion_TD.webp",
+    "thumbnail": "images/polygon-invasion-td.webp",
     "genres": [
       "Tower Defense",
       "Strategy"

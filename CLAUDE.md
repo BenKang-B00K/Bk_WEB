@@ -48,7 +48,8 @@ There are no tests in this repo.
 - **Firestore rules:** never `allow update: if true`. `leaderboards.{name, gameId}` are immutable post-create. Comments capped at 300 chars, nicknames at 30.
 - **Errors:** every route is wrapped in `<ErrorBoundary>` — don't add per-page try/catch UI.
 - **Images:** WebP only, in `public/images/`, referenced as `"images/foo.webp"` from `games.json`. PWA icons: 192×192 and 512×512.
-- **Image optimization:** `scripts/optimize-images.cjs` resizes/re-encodes oversized banners in-place to 800w q72. Skips icons, OG image, and `ArcadeDeck Banner.webp`. Run manually after adding large new banners.
+- **Image optimization:** `scripts/optimize-images.cjs` resizes/re-encodes oversized banners in-place to 640w q70. Skips icons and `arcadedeck-banner.webp`. Run manually after adding large new banners.
+- **Image naming:** `{slug}.webp` kebab-case lowercase (matches `games.json` slug). System files: `favicon.webp`, `arcadedeck-banner.webp`, `bg.webp`, `icon-192x192.webp`, `icon-512x512.webp`.
 
 ## SEO / verification artifacts
 
