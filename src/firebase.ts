@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { initializeFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDFwB-Yt7ARcMZoPD6-1vI892PXyLEvdcU",
@@ -11,8 +11,11 @@ const firebaseConfig = {
   measurementId: "G-TZYVTF4100"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Cloud Firestore and get a reference to the service
-export const db = getFirestore(app);
+// Auto-detect long polling: WebChannel fails behind some proxies/networks
+// (corp firewalls, Cloudflare in some regions) → ERR_TIMED_OUT in console.
+// SDK probes the connection and falls back to long polling when needed.
+export const db = initializeFirestore(app, {
+  experimentalAutoDetectLongPolling: true,
+});

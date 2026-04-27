@@ -6,7 +6,7 @@ declare global {
   }
 }
 
-const AD_CLIENT_ID = "ca-pub-6365186183616155";
+const AD_CLIENT_ID = "ca-pub-2461804849200179";
 
 interface AdBannerProps {
   slot?: string;
