@@ -123,7 +123,7 @@ const MyGames = () => {
                         <Medal size={24} className={`rank-medal rank-${game.rank}`} aria-hidden="true" />
                         <span className="rank-num">{game.rank === 1 ? '1st' : game.rank === 2 ? '2nd' : '3rd'}</span>
                       </div>
-                      <img src={game.thumbnail} alt={game.title} className="card-thumb" />
+                      <img src={game.thumbnail} alt={game.title} className="card-thumb" width="640" height="360" loading="lazy" decoding="async" />
                       <div className="card-info">
                         <h3>{game.title}</h3>
                         <div className="score-info">
@@ -148,7 +148,7 @@ const MyGames = () => {
               <div className="my-games-list">
                 {noRankGames.map(game => (
                   <Link key={game.id} to={`/play/${game.id}`} className="mini-game-card">
-                    <img src={game.thumbnail} alt={game.title} />
+                    <img src={game.thumbnail} alt={game.title} width="640" height="360" loading="lazy" decoding="async" />
                     <div className="mini-info">
                       <h4>{game.title}</h4>
                       <span className="genre-tag">{game.genres[0]}</span>

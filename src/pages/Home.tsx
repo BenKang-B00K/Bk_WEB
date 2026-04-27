@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Search, X, Edit3 } from 'lucide-react';
@@ -6,13 +6,12 @@ import Navbar from '../components/Navbar';
 import GameGrid from '../components/GameGrid';
 import GameCard from '../components/GameCard';
 import AdBanner from '../components/AdBanner';
-import GlobalLeaderboard from '../components/GlobalLeaderboard';
 import { games } from '../data/games';
 import { compareLeaderboardEntries } from '../utils/leaderboardUtils';
-import { db } from '../firebase';
-import { collection, query, where, getDocs, orderBy, limit } from "firebase/firestore";
 import { BANNED_WORDS, RANDOM_ID_MIN, RANDOM_ID_MAX, AD_SLOTS, LEADERBOARD_FETCH_LIMIT } from '../constants/gameConstants';
 import './Home.css';
+
+const GlobalLeaderboard = lazy(() => import('../components/GlobalLeaderboard'));
 
 const Home: React.FC = () => {
   const [nickname, setNickname] = React.useState<string>(() => {
@@ -41,6 +40,10 @@ const Home: React.FC = () => {
   React.useEffect(() => {
     const fetchUserRanks = async () => {
       try {
+        const [{ db }, { collection, query, where, getDocs, orderBy, limit }] = await Promise.all([
+          import('../firebase'),
+          import('firebase/firestore'),
+        ]);
         const userScoresSnap = await getDocs(
           query(collection(db, "leaderboards"), where("name", "==", nickname))
         );
@@ -72,7 +75,10 @@ const Home: React.FC = () => {
         console.error("Error fetching user ranks:", err);
       }
     };
-    fetchUserRanks();
+    // Defer to idle so firebase chunk doesn't compete with FCP/LCP.
+    const ric = (window as Window & { requestIdleCallback?: (cb: () => void) => number }).requestIdleCallback;
+    if (ric) ric(() => fetchUserRanks());
+    else setTimeout(fetchUserRanks, 1500);
   }, [nickname]);
 
   const showNotification = (message: string, type: 'success' | 'info' | 'error' = 'info') => {
@@ -105,6 +111,10 @@ const Home: React.FC = () => {
 
     // Check for nickname duplication
     try {
+      const [{ db }, { collection, query, where, getDocs, limit }] = await Promise.all([
+        import('../firebase'),
+        import('firebase/firestore'),
+      ]);
       const q = query(collection(db, "leaderboards"), where("name", "==", finalName), limit(1));
       const querySnapshot = await getDocs(q);
 
@@ -231,7 +241,9 @@ const Home: React.FC = () => {
 
       {/* ── Compact Global Ranking Bar ── */}
       <div className="container">
-        <GlobalLeaderboard variant="compact" />
+        <Suspense fallback={<div style={{ minHeight: 64 }} />}>
+          <GlobalLeaderboard variant="compact" />
+        </Suspense>
       </div>
 
       {/* ── Search + Genre filters (sticky) ── */}
@@ -281,7 +293,7 @@ const Home: React.FC = () => {
                 .sort((a, b) => parseInt(b.id) - parseInt(a.id))
                 .map(g => (
                   <Link key={`quick-${g.id}`} to={`/play/${g.slug}`} className="quick-card">
-                    <img src={`${import.meta.env.BASE_URL}${g.thumbnail}`} alt={g.title} loading="lazy" />
+                    <img src={`${import.meta.env.BASE_URL}${g.thumbnail}`} alt={g.title} width="640" height="360" loading="lazy" decoding="async" />
                     <span className="quick-card-title">{g.title}</span>
                   </Link>
                 ))

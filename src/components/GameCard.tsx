@@ -60,6 +60,8 @@ const GameCard: React.FC<GameCardProps> = ({ game, onProductionClick, isRecently
         <img
           src={thumbnailUrl}
           alt={game.title}
+          width="640"
+          height="360"
           loading="lazy"
           decoding="async"
           onLoad={() => setImageLoaded(true)}
